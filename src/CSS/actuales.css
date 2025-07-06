@@ -1,0 +1,200 @@
+@font-face {
+    font-family: "TituloPrincipal";
+    src: url("../assets/Tipografias/SesionTiempo.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Parrafo";
+    src: url("../assets/Tipografias/SesionTiempo.ttf") format("truetype");
+  }
+  
+  .contenedor-actuales {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #cdb4db, #219ebc);
+    padding: 2rem 0;
+  }
+  
+  .titulo-actuales {
+    font-family: "TituloPrincipal", cursive, sans-serif;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 3rem;
+  }
+  
+  .titulo-actuales h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .titulo-actuales p {
+    font-size: 1.2rem;
+    margin: 0;
+    opacity: 0.9;
+  }
+  
+  .galeria-actuales {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .tarjeta-actual {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+  
+  .tarjeta-actual:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  }
+  
+  .imagen-container {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+  }
+  
+  .imagen-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  
+  .tarjeta-actual:hover .imagen-container img {
+    transform: scale(1.1);
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(123, 44, 191, 0.8), rgba(33, 158, 188, 0.8));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .tarjeta-actual:hover .overlay {
+    opacity: 1;
+  }
+  
+  .ver-mas {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .info-actual {
+    padding: 1.5rem;
+    font-family: "Parrafo", cursive, sans-serif;
+  }
+  
+  .info-actual h4 {
+    margin: 0 0 1rem 0;
+    color: #39164d;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  
+  .detalles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .año {
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .corazon {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0.5rem;
+  }
+  
+  .corazon:hover {
+    transform: scale(1.3);
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-contenido {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-contenido img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-contenido button {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    font-weight: bold;
+    border: none;
+    background: linear-gradient(45deg, #7b2cbf, #219ebc);
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .modal-contenido button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    .galeria-actuales {
+      grid-template-columns: 1fr;
+      padding: 0 1rem;
+    }
+  
+    .titulo-actuales h2 {
+      font-size: 2rem;
+    }
+  
+    .titulo-actuales p {
+      font-size: 1rem;
+    }
+  }
+  

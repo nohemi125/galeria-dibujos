@@ -1,0 +1,73 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; 
+}
+
+@font-face {
+  font-family: 'TituloPrincipal';
+    src: url('../assets/Tipografias/Titulo.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Parrafo';
+  src: url('../assets/Tipografias/fuente4.otf') format('truetype');
+}
+
+.sobre-mi { 
+  min-height: 100vh;
+  overflow-y: auto;
+  width: 100%;  
+  background: linear-gradient(to right, #cdb4db, #219ebc);
+  box-sizing: border-box;
+}
+
+
+.titulo{
+ font-family: 'TituloPrincipal', cursive, sans-serif;
+ color: #7b2cbf;
+ text-align: center;
+}
+.mifoto{
+  text-align: center;
+
+}
+
+.mifoto img {
+  height: 12rem;
+  width: 12rem;
+  border-radius: 100%;
+  animation: flotar 3s ease-in-out infinite;
+  margin-top: 2rem;
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+.acercaDeMi {
+  color: #240046;
+  text-align: center;
+  margin: 20px auto;  
+  width: 30rem;
+  height: 20rem;
+  font-family: 'Parrafo', sans-serif;
+  display: flex;
+  align-items: center;     
+  justify-content: center; 
+}
+
+.acercaDeMi p {
+  text-align: center;
+}

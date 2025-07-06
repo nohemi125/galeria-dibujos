@@ -1,0 +1,446 @@
+@font-face {
+  font-family: "TextoPrincipal";
+  src: url("../assets/Tipografias/SesionTiempo.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Parrafo';
+  src: url('../assets/Tipografias/fuente4.otf') format('truetype');
+}
+
+.sesion-tiempo-mejorada {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sesion-tiempo-mejorada::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.contenedor-etapas {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header de la sección */
+.header-etapas {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.titulo-etapas {
+  font-family: "TituloPrincipal", serif;
+  font-size: 3rem;
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInDown 1s ease-out;
+}
+
+.subtitulo-etapas {
+  font-family: "TextoPrincipal", sans-serif;
+  font-size: 1.3rem;
+  color: #7f8c8d;
+  margin: 0 0 2rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.linea-decorativa {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  margin: 0 auto;
+  border-radius: 2px;
+  animation: expandWidth 1s ease-out 0.6s both;
+}
+
+/* Grid de tarjetas */
+.grid-etapas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.grid-etapas.visible .tarjeta-etapa {
+  animation: slideInUp 0.8s ease-out both;
+}
+
+.tarjeta-etapa {
+  text-decoration: none;
+  display: block;
+  height: 450px;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+.tarjeta-etapa:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.tarjeta-contenido {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen de fondo */
+.imagen-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.6s ease;
+}
+
+.tarjeta-etapa:hover .imagen-fondo {
+  transform: scale(1.1);
+}
+
+/* Overlay con gradiente */
+.overlay-gradiente {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+}
+
+.tarjeta-etapa:hover .overlay-gradiente {
+  opacity: 0.95;
+}
+
+/* Contenido de la tarjeta */
+.contenido-tarjeta {
+  position: relative;
+  z-index: 3;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+.header-tarjeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.icono-etapa {
+  font-size: 2.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.8rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.info-periodo {
+  text-align: right;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.años {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  font-family: "TituloPrincipal", serif;
+
+
+}
+
+.cantidad {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  font-family: "Parrafo", serif;
+
+}
+
+.texto-tarjeta {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titulo-tarjeta {
+  font-family: "TituloPrincipal", serif;
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitulo-tarjeta {
+  font-family: "TextoPrincipal", sans-serif;
+  font-size: 1.2rem;
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.descripcion-tarjeta {
+  font-family: "TextoPrincipal", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.footer-tarjeta {
+  margin-top: 1.5rem;
+}
+
+.btn-explorar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;  
+  font-family: "TituloPrincipal", serif;
+
+}
+
+.tarjeta-etapa:hover .btn-explorar {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(5px);
+}
+
+/* Efectos decorativos */
+.efectos-decorativos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.circulo-decorativo {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+.circulo-1 {
+  width: 60px;
+  height: 60px;
+  top: 20%;
+  right: 10%;
+  animation-delay: 0s;
+}
+
+.circulo-2 {
+  width: 40px;
+  height: 40px;
+  top: 60%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+.circulo-3 {
+  width: 80px;
+  height: 80px;
+  bottom: 20%;
+  left: 10%;
+  animation-delay: 4s;
+}
+
+/* Sección adicional */
+.seccion-adicional {
+  margin-top: 4rem;
+}
+
+.caja-inspiracion {
+  background: white;
+  padding: 3rem;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.caja-inspiracion h3 {
+  font-family: "TituloPrincipal", serif;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin: 0 0 1.5rem 0;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.caja-inspiracion p {
+  font-family: "TextoPrincipal", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid-etapas {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .titulo-etapas {
+    font-size: 2.2rem;
+  }
+
+  .subtitulo-etapas {
+    font-size: 1.1rem;
+  }
+
+  .tarjeta-etapa {
+    height: 400px;
+  }
+
+  .contenido-tarjeta {
+    padding: 1.5rem;
+  }
+
+  .titulo-tarjeta {
+    font-size: 1.8rem;
+  }
+
+  .icono-etapa {
+    font-size: 2rem;
+    padding: 0.6rem;
+  }
+
+  .caja-inspiracion {
+    padding: 2rem;
+  }
+
+  .caja-inspiracion h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-etapas {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .contenedor-etapas {
+    padding: 0 1rem;
+  }
+
+  .tarjeta-etapa {
+    height: 350px;
+  }
+
+  .titulo-etapas {
+    font-size: 1.8rem;
+  }
+}
