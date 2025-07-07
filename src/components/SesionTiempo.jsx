@@ -35,7 +35,7 @@ function SesionTiempo() {
       color: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
       icono: "🌱",
       años: "2018-2020",
-      cantidad: "35+ dibujos",
+      cantidad: "30+ dibujos",
     },
     {
       id: "actuales",
@@ -59,7 +59,7 @@ function SesionTiempo() {
       color: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       icono: "🌈",
       años: "2023-2025",
-      cantidad: "4 dibujos",
+      cantidad: "9 dibujos",
     },
   ]
 
