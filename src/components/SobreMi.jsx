@@ -19,7 +19,7 @@ function SobreMi() {
   }, [])
 
   const habilidades = [
-    { nombre: "Hiperrealismo", nivel: 65 },
+    { nombre: "realismo", nivel: 65 },
     { nombre: "Dibujo a Lápiz", nivel: 90 },
     { nombre: "Técnicas de Color", nivel: 40 },
     { nombre: "Caricaturas", nivel: 80 },

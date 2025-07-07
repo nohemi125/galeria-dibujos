@@ -28,6 +28,7 @@ import dibujo24 from "../assets/Comienzos/dibujo24.JPG"
 import dibujo25 from "../assets/Comienzos/dibujo25.JPG"
 import dibujo26 from "../assets/Comienzos/dibujo26.JPG"
 import dibujo27 from "../assets/Comienzos/dibujo27.JPG"
+import dibujo28 from "../assets/Comienzos/dibujo28.JPG"
 import dibujo29 from "../assets/Comienzos/dibujo29.JPG"
 import dibujo30 from "../assets/Comienzos/dibujo30.jpg"
 import dibujo31 from "../assets/Comienzos/dibujo31.jpg"
@@ -303,7 +304,7 @@ function Comienzos() {
     },
     {
       id: 27,
-      imagen: dibujo27,
+      imagen: dibujo28,
       año: 2023,
       titulo: "pez Koi",
       descripcion: "este dibujo lo hice tomando referencias de pinterst",
