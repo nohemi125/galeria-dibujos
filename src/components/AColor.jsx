@@ -10,6 +10,9 @@ import dibujo6 from "../assets/acolor/dibujo6.JPG"
 import dibujo7 from "../assets/acolor/dibujo7.JPG"
 import dibujo8 from "../assets/acolor/dibujo8.JPG"
 import dibujo9 from "../assets/acolor/dibujo9.JPG"
+import dibujo10 from "../assets/acolor/dibujo10.JPG"
+
+
 import { useState } from "react"
 
 function AColor() {
@@ -108,6 +111,16 @@ function AColor() {
       tiempo: "1 hora",
       tecnica: "Marcadores Touch",
       categoria: "objeto",
+    },
+     {
+      id: 10,
+      imagen: dibujo10,
+      año: 2025,
+      titulo: "alien",
+      descripcion: "dibujo relizado para mejorar el manejo de colores y degradados",
+      tiempo: "4 hora",
+      tecnica: "colore prismacolor",
+      categoria: "retraro",
     }
   ]
 

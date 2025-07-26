@@ -29,6 +29,8 @@ import dibujo26 from "../assets/actuales/dibujo26.jpg"
 import dibujo27 from "../assets/actuales/dibujo27.jpg"
 import dibujo28 from "../assets/actuales/dibujo28.JPG"
 import dibujo29 from "../assets/actuales/dibujo29.jpg"
+import dibujo30 from "../assets/actuales/dibujo30.jpg"
+import dibujo31 from "../assets/actuales/dibujo31.jpg"
 import { useState } from "react"
 
 function Actuales() {
@@ -313,11 +315,32 @@ function Actuales() {
       imagen: dibujo29,
       año: 2025,
       titulo: "Rostro Realista",
-      descripcion: "Rostro de una mujer, tome la imagen de pinterest,  fue mi ultimo dibujo",
+      descripcion: "Rostro de una mujer, tome la imagen de pinterest",
       tiempo: "10 horas",
       tecnica: "Lápiz grafito",
       categoria: "practica",
+    }, 
+     {
+      id: 29,
+      imagen: dibujo30,
+      año: 2025,
+      titulo: "Rostro Realista",
+      descripcion: "Rostro de una mujer, tome la imagen de pinterest,  fue mi ultimo dibujo",
+      tiempo: "2 horas",
+      tecnica: "Lápiz grafito",
+      categoria: "practica",
+    },
+      {
+      id: 30,
+      imagen: dibujo31,
+      año: 2025,
+      titulo: "listo para probar",
+      descripcion: "lengua extendida, al lado de una paleta",
+      tiempo: "4 horas",
+      tecnica: "Lápiz grafito",
+      categoria: "practica",
     }
+
   ]
 
   const categorias = ["todos", "pedidos", "practica"]

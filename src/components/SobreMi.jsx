@@ -28,7 +28,7 @@ function SobreMi() {
 
   const estadisticas = [
     { numero: "150+", texto: "Dibujos Creados" },
-    { numero: "17", texto: "Años de Experiencia dibujando" },
+    { numero: "5", texto: "Años de Experiencia dibujando" },
     { numero: "30+", texto: "Retratos Realizados" },
     { numero: "100%", texto: "Autodidacta" },
   ]
@@ -69,7 +69,7 @@ function SobreMi() {
             <div className="historia-contenido">
               <div className="parrafo-destacado">
                 <p>
-                  Hola, soy Nohemy Morelo. Desde pequeña, el arte ha sido parte fundamental de mi vida. Me especializo en el hiperrealismo, una técnica que he desarrollado de forma autodidacta, y también disfruto crear caricaturas y explorar diferentes estilos.
+                  Hola! soy Nohemy Morelo. Desde pequeña, el arte ha sido parte de mi vida. pero fue a partir del 2019 cuando descubrí mi talento para el realismo y los retratos, una técnica que he desarrollado de forma autodidacta, y también disfruto crear caricaturas y explorar diferentes estilos.
                   <br /><br />
                   Esta galería refleja mi evolución como artista, mi dedicación y el amor que pongo en cada trazo. Gracias por acompañarme en este viaje visual.
                 </p>
