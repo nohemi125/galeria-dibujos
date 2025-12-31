@@ -32,6 +32,13 @@ import dibujo28 from "../assets/Comienzos/dibujo28.JPG"
 import dibujo29 from "../assets/Comienzos/dibujo29.JPG"
 import dibujo30 from "../assets/Comienzos/dibujo30.jpg"
 import dibujo31 from "../assets/Comienzos/dibujo31.jpg"
+import dibujo32 from "../assets/Comienzos/dibujo32.JPG"
+import dibujo33 from "../assets/Comienzos/dibujo33.JPG"
+import dibujo34 from "../assets/Comienzos/dibujo34.JPG"
+
+
+
+
 
 import { useState } from "react"
 
@@ -39,7 +46,6 @@ function Comienzos() {
   const [like, setLike] = useState({})
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
-  const [filtroActivo, setFiltroActivo] = useState("todos")
 
   const dibujosComienzos = [
     {
@@ -47,7 +53,7 @@ function Comienzos() {
       imagen: dibujo1,
       año: 2023,
       titulo: "practica de rostro",
-      descripcion: "practica de rostro, tome la imagen de pinterest",
+      descripcion: "practica de rostro, referencia de pinterest",
       tiempo: "3 horas",
       tecnica: "Lápiz grafito",
       categoria: "practica",
@@ -57,7 +63,7 @@ function Comienzos() {
       imagen: dibujo2,
       año: 2023,
       titulo: "Retrato ",
-      descripcion: "Dibujos que realice como reto de una hora",
+      descripcion: "reto de dibujos retrato en una hora",
       tiempo: "1 horas",
       tecnica: "Lápiz 2B-6B",
       categoria: "pedidos",
@@ -77,7 +83,7 @@ function Comienzos() {
       imagen: dibujo5,
       año: 2023,
       titulo: "practica de tiempo",
-      descripcion: "practica de tiempo, tome la imagen de pinteres",
+      descripcion: "practica de tiempo",
       tiempo: "1 minuto",
       tecnica: "Lápiz grafito",
       categoria: "practica",
@@ -136,7 +142,7 @@ function Comienzos() {
       id: 10,
       imagen: dibujo11,
       año: 2023,
-      titulo: "practica de rostro como detalle para la abuela ",
+      titulo: "practica de rostro como detalle  ",
       descripcion: "detalle que realice para la abuela ",
       tiempo: "1 hora",
       tecnica: "Lápiz grafito",
@@ -176,7 +182,7 @@ function Comienzos() {
       id: 14,
       imagen: dibujo15,
       año: 2023,
-      titulo: "Dibujo al bebe",
+      titulo: "practica de rostro como detalle",
       descripcion: "detalle que realice para un primo",
       tiempo: "2 hora",
       tecnica: "Lápiz grafito",
@@ -187,7 +193,7 @@ function Comienzos() {
       imagen: dibujo16,
       año: 2023,
       titulo: "practica de bebe",
-      descripcion: "practica para mejorar mi tecnica, tome la imagen de pinteres",
+      descripcion: "practica para mejorar mi tecnica, referencia de pinteres",
       tiempo: "1 hora",
       tecnica: "Lápiz grafito",
       categoria: "practica",
@@ -197,7 +203,7 @@ function Comienzos() {
       imagen: dibujo17,
       año: 2022,
       titulo: "practica de rostro",
-      descripcion: "primeros retratos que realice sin usar ninguna tecnica de dibujo",
+      descripcion: "retratos que realice sin usar ninguna tecnica de dibujo",
       tiempo: "1 hora",
       tecnica: "Lápiz grafito",
       categoria: "Primeros Retratos",
@@ -207,7 +213,7 @@ function Comienzos() {
       imagen: dibujo18,
       año: 2022,
       titulo: "practica de rostro",
-      descripcion: "primeros retratos que realice sin usar ninguna tecnica de dibujo",
+      descripcion: " retratos que realice sin usar ninguna tecnica de dibujo",
       tiempo: "1 hora",
       tecnica: "Lápiz grafito",
       categoria: "Primeros Retratos",
@@ -216,8 +222,8 @@ function Comienzos() {
       id: 18,
       imagen: dibujo19,
       año: 2022,
-      titulo: "retrato para una amiga",
-      descripcion: "primeros retratos que realice sin usar ninguna tecnica de dibujo",
+      titulo: "practica de rostro como detalle",
+      descripcion: "retratos que realice sin usar ninguna tecnica de dibujo",
       tiempo: " horas",
       tecnica: "Lápiz grafito",
       categoria: "Primeros Retratos",
@@ -237,8 +243,8 @@ function Comienzos() {
       imagen: dibujo21,
       año: 2022,
       titulo: "practica",
-      descripcion: "practicando para mejorar, y tomando imagenes de refencia de pinterst",
-      tiempo: "1 hora",
+      descripcion: "practicando para mejorar, refencia de pinterst",
+      tiempo: "1 hora", 
       tecnica: "Lápiz grafito",
       categoria: "practica",
     },
@@ -257,7 +263,7 @@ function Comienzos() {
       imagen: dibujo23,
       año: 2022,
       titulo: "Mama",
-      descripcion: "Primer dibujo realista despues de descubrir que podia dibujar",
+      descripcion: "practica rostros, despues de descubrir mi talento",
       tiempo: "3 hora",
       tecnica: "Lápiz grafito",
       categoria: "Primeros Retratos",
@@ -266,8 +272,8 @@ function Comienzos() {
       id: 23,
       imagen: dibujo24,
       año: 2022,
-      titulo: "primer pedido",
-      descripcion: "primer dibujo que me pidieron, lo hice sin realizar ninguna tecnica de dibujo",
+      titulo: "primeros pedidos",
+      descripcion: "primeros encargos, lo hice sin realizar ninguna tecnica de dibujo",
       tiempo: "4 horas",
       tecnica: "Lápiz grafito",
       categoria: "Primeros pedidos",
@@ -277,21 +283,12 @@ function Comienzos() {
       imagen: dibujo25,
       año: 2023,
       titulo: "practica",
-      descripcion: "practica de dibujo tomando referencia de pinterst",
+      descripcion: "practica de dibujo, referencia de pinterst",
       tiempo: "20 minutos",
       tecnica: "Lápiz grafito",
       categoria: "Primeros Retratos",
     },
-    // {
-    //   id: 25,
-    //   imagen: dibujo26,
-    //   año: 2023,
-    //   titulo: "dibujo amiga",
-    //   descripcion: "para este dibujo ya tenia conocimientos en tecnicas de dibujo",
-    //   tiempo: "1 hora",
-    //   tecnica: "Lápiz grafito",
-    //   categoria: "primeros pedidos",
-    // },
+    
     {
       id: 26,
       imagen: dibujo27,
@@ -307,7 +304,7 @@ function Comienzos() {
       imagen: dibujo28,
       año: 2023,
       titulo: "pez Koi",
-      descripcion: "este dibujo lo hice tomando referencias de pinterst",
+      descripcion: "referencias de pinterst",
       tiempo: "1 hora",
       tecnica: "Lápiz grafito",
       categoria: "practica",
@@ -316,7 +313,7 @@ function Comienzos() {
       id: 28,
       imagen: dibujo29,
       año: 2023,
-      titulo: "pedido para amigo",
+      titulo: "primeros pedidos",
       descripcion: "un amigo me pidio dibujar a su esposa",
       tiempo: "1 hora",
       tecnica: "Lápiz grafito",
@@ -326,8 +323,8 @@ function Comienzos() {
       id: 29,
       imagen: dibujo30,
       año: 2023,
-      titulo: "primer retrato",
-      descripcion: "de mis primeros pedidos despues te tener mas tecticas y tacticas de dibujo",
+      titulo: "primeros pedidos",
+      descripcion: "primeros pedidos despues aprender mas tecticas ",
       tiempo: "10 horas",
       tecnica: "Lápiz grafito",
       categoria: "primeros pedidos",
@@ -337,7 +334,7 @@ function Comienzos() {
       imagen: dibujo3,
       año: 2022,
       titulo: "practica detalles",
-      descripcion: "de mis primeros pedidos despues te tener mas tecticas y tacticas de dibujo",
+      descripcion: " primeros pedidos despues aprender mas tecticas",
       tiempo: "15 horas",
       tecnica: "Lápiz grafito",
       categoria: "Primeros Retratos",
@@ -346,8 +343,38 @@ function Comienzos() {
       id: 31,
       imagen: dibujo31,
       año: 2022,
-      titulo: "primeros",
-      descripcion: "de mis primeros pedidos despues te tener mas tecticas y tacticas de dibujo",
+      titulo: "primeros pedidos",
+      descripcion: "primeros pedidos despues aprender mas tecticas ",
+      tiempo: "15 horas",
+      tecnica: "Lápiz grafito",
+      categoria: "primeros pedidos",
+    },
+    {
+      id: 32,
+      imagen: dibujo32,
+      año: 2022,
+      titulo: "primeros pedidos",
+      descripcion: "primeros pedidos despues aprender mas tecticas ",
+      tiempo: "15 horas",
+      tecnica: "Lápiz grafito",
+      categoria: "primeros pedidos",
+    },
+    {
+      id: 33,
+      imagen: dibujo33,
+      año: 2022,
+      titulo: "primeros pedidos",
+      descripcion: "primeros pedidos despues aprender mas tecticas ",
+      tiempo: "15 horas",
+      tecnica: "Lápiz grafito",
+      categoria: "primeros pedidos",
+    },
+    {
+      id: 34,
+      imagen: dibujo34,
+      año: 2023,
+      titulo: "practica detalles",
+      descripcion: "practica para  aprender mas tecticas ",
       tiempo: "15 horas",
       tecnica: "Lápiz grafito",
       categoria: "primeros pedidos",
@@ -357,10 +384,6 @@ function Comienzos() {
 
   ]
 
-  const categorias = ["todos", "Primeros Retratos", "primeros pedidos", "regalos"]
-
-  const dibujosFiltrados =
-    filtroActivo === "todos" ? dibujosComienzos : dibujosComienzos.filter((dibujo) => dibujo.categoria === filtroActivo)
 
   const toggleLike = (id) => {
     setLike((prev) => ({
@@ -386,21 +409,9 @@ function Comienzos() {
         <p>Los primeros pasos hacia el dominio de la técnica realista</p>
       </div>
 
-      {/* Filtros */}
-      <div className="filtros-galeria">
-        {categorias.map((categoria) => (
-          <button
-            key={categoria}
-            className={`filtro-btn ${filtroActivo === categoria ? "activo" : ""}`}
-            onClick={() => setFiltroActivo(categoria)}
-          >
-            {categoria.charAt(0).toUpperCase() + categoria.slice(1)}
-          </button>
-        ))}
-      </div>
 
       <div className="galeria-grid">
-        {dibujosFiltrados.map((dibujo) => (
+        {dibujosComienzos.map((dibujo) => (
           <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
             <div className="imagen-wrapper">
               <img src={dibujo.imagen || "/placeholder.svg"} alt={dibujo.titulo} />
@@ -417,7 +428,6 @@ function Comienzos() {
               <p className="descripcion-galeria">{dibujo.descripcion}</p>
               <div className="meta-info">
                 <span className="año-galeria">Año: {dibujo.año}</span>
-                <span className="categoria-tag">{dibujo.categoria}</span>
               </div>
               <div className="acciones-galeria">
                 <span
@@ -481,9 +491,6 @@ function Comienzos() {
               </p>
               <p>
                 <strong>Año:</strong> {imagenSeleccionada.año}
-              </p>
-              <p>
-                <strong>Categoría:</strong> {imagenSeleccionada.categoria}
               </p>
               <button onClick={cerrarModal}>Cerrar</button>
             </div>

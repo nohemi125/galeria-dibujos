@@ -34,7 +34,6 @@ function Infancia() {
   const [like, setLike] = useState({})
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
-  const [filtroActivo, setFiltroActivo] = useState("todos")
 
   const dibujosInfancia = [
     {
@@ -50,7 +49,7 @@ function Infancia() {
       imagen: dibujo2,
       año: 2016,
       titulo: "Recuerdos de Infancia",
-      tecnica: "colores escolares",
+      tecnica: "colores escolares",       
       categoria: "imaginacion",
     },
     {
@@ -249,10 +248,6 @@ function Infancia() {
     },
   ]
 
-  const categorias = ["todos", "imaginacion", "pinterest"]
-
-  const dibujosFiltrados =
-    filtroActivo === "todos" ? dibujosInfancia : dibujosInfancia.filter((dibujo) => dibujo.categoria === filtroActivo)
 
   const toggleLike = (id) => {
     setLike((prev) => ({
@@ -278,21 +273,9 @@ function Infancia() {
         <p>Descubriendo el talento y el amor que le tenía al dibujo</p>
       </div>
 
-      {/* Filtros */}
-      <div className="filtros-galeria">
-        {categorias.map((categoria) => (
-          <button
-            key={categoria}
-            className={`filtro-btn ${filtroActivo === categoria ? "activo" : ""}`}
-            onClick={() => setFiltroActivo(categoria)}
-          >
-            {categoria.charAt(0).toUpperCase() + categoria.slice(1)}
-          </button>
-        ))}
-      </div>
 
       <div className="galeria-grid">
-        {dibujosFiltrados.map((dibujo) => (
+        {dibujosInfancia.map((dibujo) => (
           <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
             <div className="imagen-wrapper">
               <img src={dibujo.imagen || "/placeholder.svg"} alt={dibujo.titulo} />
@@ -308,7 +291,6 @@ function Infancia() {
               <h4>{dibujo.titulo}</h4>
               <div className="meta-info">
                 <span className="año-galeria">Año: {dibujo.año}</span>
-                <span className="categoria-tag">{dibujo.categoria}</span>
               </div>
               <div className="acciones-galeria">
                 <span
@@ -366,9 +348,6 @@ function Infancia() {
               </p>
               <p>
                 <strong>Año:</strong> {imagenSeleccionada.año}
-              </p>
-              <p>
-                <strong>Categoría:</strong> {imagenSeleccionada.categoria}
               </p>
               <button onClick={cerrarModal}>Cerrar</button>
             </div>

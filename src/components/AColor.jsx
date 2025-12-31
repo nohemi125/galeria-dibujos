@@ -11,6 +11,8 @@ import dibujo7 from "../assets/acolor/dibujo7.JPG"
 import dibujo8 from "../assets/acolor/dibujo8.JPG"
 import dibujo9 from "../assets/acolor/dibujo9.JPG"
 import dibujo10 from "../assets/acolor/dibujo10.jpg"
+import dibujo11 from "../assets/acolor/dibujo11.jpeg"
+import dibujo12 from "../assets/acolor/dibujo12.jpeg"
 
 
 import { useState } from "react"
@@ -19,7 +21,6 @@ function AColor() {
   const [like, setLike] = useState({})
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
-  const [filtroActivo, setFiltroActivo] = useState("todos")
 
   const dibujosColor = [
     {
@@ -121,13 +122,30 @@ function AColor() {
       tiempo: "4 hora",
       tecnica: "colore prismacolor",
       categoria: "retraro",
-    }
+    },
+     {
+      id: 11,
+      imagen: dibujo11,
+      año: 2025,
+      titulo: "ojo",
+      descripcion: "dibujo relizado con los 3 colores primarios para mejorar el manejo de colores y degradados",
+      tiempo: "4 hora",
+      tecnica: "colore prismacolor",
+      categoria: "retraro",
+    },
+     {
+      id: 12,
+      imagen: dibujo12,
+      año: 2025,
+      titulo: "paisaje",
+      descripcion: "practica para mejorar el manejo de colores y degradados",
+      tiempo: "4 hora",
+      tecnica: "colore prismacolor",
+      categoria: "retraro",
+    },
+
   ]
 
-  const categorias = ["todos", "retrato", "objeto", "naturaleza"]
-
-  const dibujosFiltrados =
-    filtroActivo === "todos" ? dibujosColor : dibujosColor.filter((dibujo) => dibujo.categoria === filtroActivo)
 
   const toggleLike = (id) => {
     setLike((prev) => ({
@@ -153,21 +171,8 @@ function AColor() {
         <p>Explorando el mundo del color y las técnicas mixtas</p>
       </div>
 
-      {/* Filtros */}
-      <div className="filtros-galeria">
-        {categorias.map((categoria) => (
-          <button
-            key={categoria}
-            className={`filtro-btn ${filtroActivo === categoria ? "activo" : ""}`}
-            onClick={() => setFiltroActivo(categoria)}
-          >
-            {categoria.charAt(0).toUpperCase() + categoria.slice(1)}
-          </button>
-        ))}
-      </div>
-
       <div className="galeria-grid">
-        {dibujosFiltrados.map((dibujo) => (
+        {dibujosColor.map((dibujo) => (
           <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
             <div className="imagen-wrapper">
               <img src={dibujo.imagen || "/placeholder.svg"} alt={dibujo.titulo} />
@@ -184,7 +189,6 @@ function AColor() {
               <p className="descripcion-galeria">{dibujo.descripcion}</p>
               <div className="meta-info">
                 <span className="año-galeria">Año: {dibujo.año}</span>
-                <span className="categoria-tag">{dibujo.categoria}</span>
               </div>
               <div className="acciones-galeria">
                 <span
@@ -248,9 +252,6 @@ function AColor() {
               </p>
               <p>
                 <strong>Año:</strong> {imagenSeleccionada.año}
-              </p>
-              <p>
-                <strong>Categoría:</strong> {imagenSeleccionada.categoria}
               </p>
               <button onClick={cerrarModal}>Cerrar</button>
             </div>
