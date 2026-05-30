@@ -18,7 +18,7 @@ function Navigation() {
     <nav className="navigation">
       <div className="nav-container">
         <Link to="/" className="nav-logo" onClick={closeMenu}>
-          <h3>Galería Nohemi</h3>
+          <h3>Galería de dibujos</h3>
         </Link>
 
         {/* Botón hamburguesa */}
@@ -48,6 +48,12 @@ function Navigation() {
           </Link>
           <Link to="/color" className={`nav-link ${location.pathname === "/color" ? "active" : ""}`} onClick={closeMenu}>
             A Color
+          </Link>
+          <Link to="/boligrafo" className={`nav-link ${location.pathname === "/boligrafo" ? "active" : ""}`} onClick={closeMenu}>
+            Bolígrafo color
+          </Link>
+          <Link to="/muro-de-amor" className={`nav-link ${location.pathname === "/muro-de-amor" ? "active" : ""}`} onClick={closeMenu}>
+            Muro de Amor
           </Link>
         </div>
       </div>

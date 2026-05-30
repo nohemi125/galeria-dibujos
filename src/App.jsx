@@ -6,6 +6,9 @@ import Infancia from "./components/Infancia"
 import Comienzos from "./components/Comienzos"
 import Actuales from "./components/Actuales"
 import AColor from "./components/AColor"
+import BoligrafoColor from "./components/BoligrafoColor"
+import MuroDeAmor from "./components/MuroDeAmor"
+import Footer from "./components/Footer"
 
 function App() {
   return (
@@ -25,7 +28,13 @@ function App() {
         <Route path="/comienzos" element={<Comienzos />} />
         <Route path="/actuales" element={<Actuales />} />
         <Route path="/color" element={<AColor />} />
+        <Route path="/boligrafo" element={<BoligrafoColor />} />
+        <Route path="/muro-de-amor" element={<MuroDeAmor />} />
+
       </Routes>
+
+    <Footer />
+
     </Router>
   )
 }

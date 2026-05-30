@@ -27,233 +27,49 @@ import dibujo24 from "../assets/infancia/dibujo24.JPG"
 import dibujo25 from "../assets/infancia/dibujo25.JPG"
 import dibujo26 from "../assets/infancia/dibujo26.JPG"
 
-
 import { useState } from "react"
 
 function Infancia() {
   const [like, setLike] = useState({})
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
+  const [orientacion, setOrientacion] = useState("vertical")
 
   const dibujosInfancia = [
-    {
-      id: 1,
-      imagen: dibujo1,
-      año: 2016,
-      titulo: "pajarillos",
-      tecnica: "colores eescolares",
-      categoria: "imaginacion",
-    },
-    {
-      id: 2,
-      imagen: dibujo2,
-      año: 2016,
-      titulo: "Recuerdos de Infancia",
-      tecnica: "colores escolares",       
-      categoria: "imaginacion",
-    },
-    {
-      id: 3,
-      imagen: dibujo3,
-      año: 2016,
-      titulo: "Técnica Básica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 4,
-      imagen: dibujo4,
-      año: 2017,
-      titulo: "tecnica Basica",
-      tecnica: "Lápiz ",
-      categoria: "pinterest",
-    },
-    {
-      id: 5,
-      imagen: dibujo5,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 6,
-      imagen: dibujo6,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },  
-    {
-      id: 7,
-      imagen: dibujo7,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 8,
-      imagen: dibujo8,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 9,
-      imagen: dibujo9,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 10,
-      imagen: dibujo10,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 11,
-      imagen: dibujo11,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 12,
-      imagen: dibujo12,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 13,
-      imagen: dibujo13,
-      año: 2016,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 14,
-      imagen: dibujo14,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 15,
-      imagen: dibujo16,
-      año: 2018,
-      titulo: "Técnica Basica",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 16,
-      imagen: dibujo17,
-      año: 2018,
-      titulo: "Técnica Básica",
-      descripcion: "Practicando con diferentes tipos de papel",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 17,
-      imagen: dibujo18,
-      año: 2018,
-      titulo: "Técnica Básica",
-      descripcion: "Explorando técnicas de dibujo a mano alzada",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 18,
-      imagen: dibujo19,
-      año: 2018,
-      titulo: "Técnica Básica",
-      descripcion: "Mejorando la precisión en los detalles",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 19,
-      imagen: dibujo20,
-      año: 2018,
-      titulo: "Técnica Básica",
-      descripcion: "Desarrollando mi técnica personal",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 20,
-      imagen: dibujo21,
-      año: 2018,
-      titulo: "Técnica Básica",
-      descripcion: "Practicando con referencias variadas",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 21,
-      imagen: dibujo22,
-      año: 2019,
-      titulo: "Técnica Básica",
-      descripcion: "Evolucionando en mi técnica de dibujo",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 22,
-      imagen: dibujo23,
-      año: 2018,
-      titulo: "Técnica Básica",
-      descripcion: "Practicando con diferentes estilos",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 23,
-      imagen: dibujo24,
-      año: 2018,
-      titulo: "Técnica Básica",
-      descripcion: "Mejorando la técnica de sombreado",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 24,
-      imagen: dibujo25,
-      año: 2017,
-      titulo: "Técnica Básica",
-      descripcion: "Dibujo experimental con técnicas mixtas",
-      tecnica: "Lápiz",
-      categoria: "pinterest",
-    },
-    {
-      id: 25,
-      imagen: dibujo26,
-      año: 2017,
-      titulo: "Técnica Básica",
-      descripcion: "Primeros experimentos con colores escolares",
-      tecnica: "colores escolares",
-      categoria: "imaginacion",
-    },
+    { id: 1, imagen: dibujo1, año: 2016, titulo: "pajarillos", tecnica: "colores escolares", categoria: "imaginacion" },
+    { id: 2, imagen: dibujo2, año: 2016, titulo: "Recuerdos de Infancia", tecnica: "colores escolares", categoria: "imaginacion" },
+    { id: 3, imagen: dibujo3, año: 2016, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 4, imagen: dibujo4, año: 2017, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 5, imagen: dibujo5, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 6, imagen: dibujo6, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 7, imagen: dibujo7, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 8, imagen: dibujo8, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 9, imagen: dibujo9, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 10, imagen: dibujo10, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 11, imagen: dibujo11, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 12, imagen: dibujo12, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 13, imagen: dibujo13, año: 2016, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 14, imagen: dibujo14, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 15, imagen: dibujo16, año: 2018, titulo: "Técnica Basica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 16, imagen: dibujo17, año: 2018, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 17, imagen: dibujo18, año: 2018, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 18, imagen: dibujo19, año: 2018, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 19, imagen: dibujo20, año: 2018, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 20, imagen: dibujo21, año: 2018, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 21, imagen: dibujo22, año: 2019, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 22, imagen: dibujo23, año: 2018, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 23, imagen: dibujo24, año: 2018, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 24, imagen: dibujo25, año: 2017, titulo: "Técnica Básica", tecnica: "Lápiz", categoria: "pinterest" },
+    { id: 25, imagen: dibujo26, año: 2017, titulo: "Técnica Básica", tecnica: "colores escolares", categoria: "imaginacion" },
   ]
 
+  const handleImageLoad = (e) => {
+    const { naturalWidth, naturalHeight } = e.target
+    setOrientacion(naturalWidth > naturalHeight ? "horizontal" : "vertical")
+  }
 
   const toggleLike = (id) => {
-    setLike((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
+    setLike((prev) => ({ ...prev, [id]: !prev[id] }))
   }
 
   const abrirModal = (dibujo) => {
@@ -264,6 +80,7 @@ function Infancia() {
   const cerrarModal = () => {
     setModalAbierto(false)
     setImagenSeleccionada(null)
+    setOrientacion("vertical")
   }
 
   return (
@@ -272,7 +89,6 @@ function Infancia() {
         <h2>Dibujos de mi Infancia</h2>
         <p>Descubriendo el talento y el amor que le tenía al dibujo</p>
       </div>
-
 
       <div className="galeria-grid">
         {dibujosInfancia.map((dibujo) => (
@@ -288,44 +104,26 @@ function Infancia() {
             </div>
 
             <div className="info-galeria">
-              <h4>{dibujo.titulo}</h4>
               <div className="meta-info">
                 <span className="año-galeria">Año: {dibujo.año}</span>
               </div>
               <div className="acciones-galeria">
                 <span
                   className="corazon-galeria"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    toggleLike(dibujo.id)
-                  }}
+                  onClick={(e) => { e.stopPropagation(); toggleLike(dibujo.id) }}
+                  style={{ display: "flex", alignItems: "center", gap: 4 }}
                 >
                   {like[dibujo.id] ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="#ff6b6b"
-                      stroke="#ff6b6b"
-                      strokeWidth="2"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ff6b6b" stroke="#ff6b6b" strokeWidth="2" width="24" height="24" viewBox="0 0 24 24">
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
                   ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="#ff6b6b"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ff6b6b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24" viewBox="0 0 24 24">
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
+                  )}
+                  {like[dibujo.id] && (
+                    <span style={{ fontSize: 13, color: "#ff6b6b", fontWeight: 500 }}>1</span>
                   )}
                 </span>
               </div>
@@ -334,22 +132,79 @@ function Infancia() {
         ))}
       </div>
 
-      {/* Modal estandarizado */}
+      {/* Modal */}
       {modalAbierto && imagenSeleccionada && (
-        <div className="modal-galeria" onClick={cerrarModal}>
-          <div className="modal-contenido-galeria" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-imagen">
-              <img src={imagenSeleccionada.imagen || "/placeholder.svg"} alt={imagenSeleccionada.titulo} />
-            </div>
-            <div className="modal-info">
-              <h3>{imagenSeleccionada.titulo}</h3>
-              <p>
-                <strong>Técnica:</strong> {imagenSeleccionada.tecnica}
-              </p>
-              <p>
-                <strong>Año:</strong> {imagenSeleccionada.año}
-              </p>
-              <button onClick={cerrarModal}>Cerrar</button>
+        <div
+          onClick={cerrarModal}
+          style={{
+            position: "fixed", inset: 0, background: "rgba(0,0,0,0.85)",
+            display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000,
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: "relative",
+              borderRadius: "12px",
+              overflow: "hidden",
+              width: orientacion === "vertical" ? "min(90vw, 480px)" : "min(90vw, 700px)",
+              maxHeight: "90vh",
+              background: "#111",
+            }}
+          >
+            <img
+              src={imagenSeleccionada.imagen || "/placeholder.svg"}
+              alt={imagenSeleccionada.titulo}
+              onLoad={handleImageLoad}
+              style={{
+                display: "block",
+                width: "100%",
+                height: "auto",
+                maxHeight: "90vh",
+                objectFit: "contain",
+              }}
+            />
+
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 25%, transparent 60%, rgba(0,0,0,0.8) 100%)",
+              pointerEvents: "none",
+            }} />
+
+            <button
+              onClick={cerrarModal}
+              aria-label="Cerrar"
+              style={{
+                position: "absolute", top: 12, right: 12,
+                background: "rgba(0,0,0,0.5)", border: "none", borderRadius: "50%",
+                width: 34, height: 34, display: "flex", alignItems: "center",
+                justifyContent: "center", cursor: "pointer", color: "#fff", fontSize: 16, padding: 0,
+              }}
+            >
+              ✕
+            </button>
+
+            <div style={{
+              position: "absolute", bottom: 0, left: 0, right: 0,
+              padding: "1.25rem 1rem 1rem",
+              display: "flex", alignItems: "center", justifyContent: "space-between",
+            }}>
+              <span style={{ color: "rgba(255,255,255,0.85)", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}>
+                🖊 {imagenSeleccionada.tecnica}
+              </span>
+
+              <span
+                onClick={(e) => { e.stopPropagation(); toggleLike(imagenSeleccionada.id) }}
+                style={{ cursor: "pointer" }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg"
+                  fill={like[imagenSeleccionada.id] ? "#ff6b6b" : "none"}
+                  stroke="#ff6b6b" strokeWidth="2"
+                  width="28" height="28" viewBox="0 0 24 24"
+                >
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </span>
             </div>
           </div>
         </div>

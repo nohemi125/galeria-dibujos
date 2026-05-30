@@ -1,147 +1,81 @@
 "use client"
 
 import "../CSS/galeria-estandar.css"
-import dibujo1 from "../assets/acolor/dibujo1.JPG"
-import dibujo2 from "../assets/acolor/dibujo2.JPG"
-import dibujo3 from "../assets/acolor/dibujo3.JPG"
-import dibujo4 from "../assets/acolor/dibujo4.JPG"
-import dibujo5 from "../assets/acolor/dibujo5.JPG"
-import dibujo6 from "../assets/acolor/dibujo6.JPG"
-import dibujo7 from "../assets/acolor/dibujo7.JPG"
-import dibujo8 from "../assets/acolor/dibujo8.JPG"
-import dibujo9 from "../assets/acolor/dibujo9.JPG"
-import dibujo10 from "../assets/acolor/dibujo10.jpg"
-import dibujo11 from "../assets/acolor/dibujo11.jpeg"
-import dibujo12 from "../assets/acolor/dibujo12.jpeg"
+import dibujo1 from "../assets/boligrafo/dibujo1.jpeg"
+import dibujo2 from "../assets/boligrafo/dibujo2.jpeg"
+import dibujo3 from "../assets/boligrafo/dibujo3.jpeg"
+import dibujo4 from "../assets/boligrafo/dibujo4.jpeg"
+import dibujo5 from "../assets/boligrafo/dibujo5.jpeg"
+import dibujo6 from "../assets/boligrafo/dibujo6.jpeg"
 
 import { useState } from "react"
 
-function AColor() {
+function BolígrafoColor() {
   const [like, setLike] = useState({})
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
   const [orientacion, setOrientacion] = useState("vertical")
 
-  const dibujosColor = [
+  const dibujos = [
     {
       id: 1,
       imagen: dibujo1,
-      año: 2023,
-      titulo: "Ave Tucan",
-      descripcion: "Referencia tomada de pinterest",
-      tiempo: "3 horas",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "naturaleza",
+      año: 2025,
+      titulo: "Frutas y flor",
+      descripcion: "Práctica de colores con frutas y una flor",
+      tiempo: "1 hora",
+      tecnica: "Bolígrafo 10 colores",
+      categoria: "practica",
     },
     {
       id: 2,
       imagen: dibujo2,
-      año: 2023,
-      titulo: "Will Smith",
-      descripcion: "mi segundo intento, sin ninguna instruccion a seguir",
-      tiempo: "15+ horas",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "retrato",
+      año: 2026,
+      titulo: "Tostada",
+      descripcion: "Práctica de texturas y tonos cálidos",
+      tiempo: "1:30 horas",
+      tecnica: "Bolígrafo 10 colores",
+      categoria: "practica",
     },
     {
       id: 3,
       imagen: dibujo3,
-      año: 2024,
-      titulo: "Bad Bunny",
-      descripcion: "referencia tomada de pinterest, mi tercer intento",
-      tiempo: "2 horas",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "retrato",
+      año: 2026,
+      titulo: "Hombre anciano",
+      descripcion: "Retrato de un hombre anciano, practicando detalles del rostro",
+      tiempo: "3 horas",
+      tecnica: "Bolígrafo 10 colores",
+      categoria: "practica",
     },
     {
       id: 4,
       imagen: dibujo4,
-      año: 2023,
-      titulo: "Morgan Freeman",
-      descripcion: "mi primer dibujo con colores, viendo videos del curso soy danny",
-      tiempo: "15+ horas",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "retrato",
+      año: 2026,
+      titulo: "Chica",
+      descripcion: "Retrato de una chica",
+      tiempo: "1 hora",
+      tecnica: "Bolígrafo 10 colores",
+      categoria: "practica",
     },
     {
       id: 5,
       imagen: dibujo5,
-      año: 2025,
-      titulo: "Practica de Lápices de colores",
-      descripcion: "practica que uso para manejar degrado en color",
-      tiempo: "1 hora",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "objeto",
+      año: 2026,
+      titulo: "Mujer con pescados",
+      descripcion: "Composición de una mujer rodeada de pescados",
+      tiempo: "3-4 horas",
+      tecnica: "Bolígrafo 10 colores",
+      categoria: "practica",
     },
     {
       id: 6,
       imagen: dibujo6,
-      año: 2025,
-      titulo: "Manzana Verde - Practica de Lápices de colores",
-      descripcion: "practica que uso para manejar degrado en color",
+      año: 2026,
+      titulo: "Dibujo 6",
+      descripcion: "Práctica con bolígrafo de colores",
       tiempo: "1 hora",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "objeto",
-    },
-    {
-      id: 7,
-      imagen: dibujo7,
-      año: 2025,
-      titulo: "Uva - Practica de Lápices de colores",
-      descripcion: "practica que uso para manejar degrado en color",
-      tiempo: "1 hora",
-      tecnica: "Marcadores Touch y lapices de colores",
-      categoria: "objeto",
-    },
-    {
-      id: 8,
-      imagen: dibujo8,
-      año: 2024,
-      titulo: "Amarilla - Practica de Lápices de colores",
-      descripcion: "practica que uso para manejar degrado en color",
-      tiempo: "1 hora",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "objeto",
-    },
-    {
-      id: 9,
-      imagen: dibujo9,
-      año: 2025,
-      titulo: "Casa - Practica de Marcadores Touch",
-      descripcion: "practica que uso para manejar degrado en color",
-      tiempo: "1 hora",
-      tecnica: "Marcadores Touch",
-      categoria: "objeto",
-    },
-    {
-      id: 10,
-      imagen: dibujo10,
-      año: 2025,
-      titulo: "alien",
-      descripcion: "dibujo relizado para mejorar el manejo de colores y degradados",
-      tiempo: "4 horas",
-      tecnica: "colores prismacolor",
-      categoria: "retrato",
-    },
-    {
-      id: 11,
-      imagen: dibujo11,
-      año: 2025,
-      titulo: "ojo",
-      descripcion: "dibujo relizado con los 3 colores primarios para mejorar el manejo de colores y degradados",
-      tiempo: "4 horas",
-      tecnica: "colores prismacolor",
-      categoria: "retrato",
-    },
-    {
-      id: 12,
-      imagen: dibujo12,
-      año: 2025,
-      titulo: "paisaje",
-      descripcion: "practica para mejorar el manejo de colores y degradados",
-      tiempo: "4 horas",
-      tecnica: "colores prismacolor",
-      categoria: "retrato",
+      tecnica: "Bolígrafo 10 colores",
+      categoria: "practica",
     },
   ]
 
@@ -151,10 +85,7 @@ function AColor() {
   }
 
   const toggleLike = (id) => {
-    setLike((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
+    setLike((prev) => ({ ...prev, [id]: !prev[id] }))
   }
 
   const abrirModal = (dibujo) => {
@@ -169,14 +100,14 @@ function AColor() {
   }
 
   return (
-    <div className="contenedor-galeria color-theme">
+    <div className="contenedor-galeria actuales-theme">
       <div className="titulo-galeria">
-        <h2>Dibujos a Color</h2>
-        <p>Explorando el mundo del color y las técnicas mixtas</p>
+        <h2>Bolígrafo Color</h2>
+        <p>Explorando el color con bolígrafo de 10 tintas</p>
       </div>
 
       <div className="galeria-grid">
-        {dibujosColor.map((dibujo) => (
+        {dibujos.map((dibujo) => (
           <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
             <div className="imagen-wrapper">
               <img src={dibujo.imagen || "/placeholder.svg"} alt={dibujo.titulo} />
@@ -195,10 +126,7 @@ function AColor() {
               <div className="acciones-galeria">
                 <span
                   className="corazon-galeria"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    toggleLike(dibujo.id)
-                  }}
+                  onClick={(e) => { e.stopPropagation(); toggleLike(dibujo.id) }}
                   style={{ display: "flex", alignItems: "center", gap: 4 }}
                 >
                   {like[dibujo.id] ? (
@@ -282,7 +210,7 @@ function AColor() {
               </span>
 
               <span
-                onClick={(e) => { e.stopPropagation(); toggleLike(imagenSeleccionada.id); }}
+                onClick={(e) => { e.stopPropagation(); toggleLike(imagenSeleccionada.id) }}
                 style={{ cursor: "pointer" }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -301,4 +229,4 @@ function AColor() {
   )
 }
 
-export default AColor
+export default BolígrafoColor

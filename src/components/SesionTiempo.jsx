@@ -41,25 +41,37 @@ function SesionTiempo() {
       id: "actuales",
       titulo: "Actuales",
       subtitulo: "Técnica Perfeccionada",
-      descripcion: "Mis obras más recientes donde demuestro mi avance desde mi infancia hasta la actualidad, y como he mejorado",
+      descripcion: "Mis obras más recientes donde demuestro mi avance de como he mejorado ",
       ruta: "/actuales",
       imagen: "nohemi.jpg",
       color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
       icono: "✏️",
-      años: "2021-2024",
+      años: "2023-2026",
       cantidad: "20+ dibujos",
     },
     {
       id: "color",
       titulo: "A Color",
       subtitulo: "Explosión Cromática",
-      descripcion: "Explorando el mundo del color con técnicas mixtas, es una tectica que apenas y estoy logrando desarrollar",
+      descripcion: "Mis primeros trazos en el mundo del color. Una técnica que aún sigo fortaleciendo",
       ruta: "/color",
       imagen: "a color.jpg",
       color: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       icono: "🌈",
       años: "2023-2025",
       cantidad: "9 dibujos",
+    },
+    {
+      id: "boligrafo",
+      titulo: "Bolígrafo a Color",
+      subtitulo: "Nueva Técnica",
+      descripcion: "Una técnica que descubrí recientemente y que me fascinó desde el primer dibujo. ",
+      ruta: "/boligrafo",
+      imagen: "boligrafo.jpg",
+      color: "linear-gradient(135deg, #f7971e 0%, #ffd200 60%, #e85d04 100%)",
+      icono: "🖊️",
+      años: "2026",
+      cantidad: "6 dibujos",
     },
   ]
 
@@ -80,9 +92,7 @@ function SesionTiempo() {
               key={etapa.id}
               to={etapa.ruta}
               className="tarjeta-etapa"
-              style={{
-                animationDelay: `${index * 0.2}s`,
-              }}
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="tarjeta-contenido">
                 {/* Imagen de fondo */}
@@ -96,9 +106,7 @@ function SesionTiempo() {
                 {/* Overlay con gradiente */}
                 <div
                   className="overlay-gradiente"
-                  style={{
-                    background: etapa.color,
-                  }}
+                  style={{ background: etapa.color }}
                 ></div>
 
                 {/* Contenido de la tarjeta */}
@@ -119,17 +127,8 @@ function SesionTiempo() {
 
                   <div className="footer-tarjeta">
                     <span className="btn-explorar">
-                      Explorar Galería
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
+                      Ver la Galería
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
                     </span>
@@ -152,12 +151,12 @@ function SesionTiempo() {
           <div className="caja-inspiracion">
             <h3>{"Cada etapa cuenta una historia única"}</h3>
             <p>
-            Mi arte ha recorrido distintas etapas, desde los primeros dibujos de mi infancia,
-             donde solo buscaba que se parecieran a lo que veía, hasta retratos que expresan 
-             emociones y desafíos técnicos. Con el tiempo, descubrí la magia del color, creando
+              Mi arte ha recorrido distintas etapas, desde los primeros dibujos de mi infancia,
+              donde solo buscaba que se parecieran a lo que veía, hasta retratos que expresan
+              emociones y desafíos técnicos. Con el tiempo, descubrí la magia del color, creando
               obras que parecen irreales por su detalle, pero que nacen de trazos hechos a mano.
-               Cada etapa refleja mi crecimiento, mi pasión y ese deseo constante de acercarme a 
-               la realidad a través del arte..
+              Cada etapa refleja mi crecimiento, mi pasión y ese deseo constante de acercarme a
+              la realidad a través del arte.
             </p>
           </div>
         </div>

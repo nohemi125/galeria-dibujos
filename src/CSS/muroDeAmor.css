@@ -1,0 +1,361 @@
+
+/* ============================================
+   SECCIÓN PRINCIPAL
+   ============================================ */
+
+.muro-de-amor {
+  background: linear-gradient(160deg, #fff8f0 0%, #cdb4db 50%, #f3e5f5 100%);
+  padding: 6rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.muro-de-amor::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(240, 98, 146, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.muro-de-amor::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(149, 117, 205, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ============================================
+   ENCABEZADO
+   ============================================ */
+
+.muro-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.muro-corona {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.8rem;
+  animation: latido 2s ease-in-out infinite;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.15); }
+}
+
+.muro-titulo {
+  font-family: "TituloPrincipal", serif;
+  font-size: 3rem;
+  margin: 0 0 1rem;
+  background: linear-gradient(45deg, #e91e8c, #9c27b0, #e91e8c);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradienteMovil 4s linear infinite;
+}
+
+@keyframes gradienteMovil {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.muro-subtitulo {
+  font-family: "Parrafo", sans-serif;
+  font-size: 1.15rem;
+  color: #7b5e7b;
+  max-width: 540px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.muro-linea {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #e91e8c, #9c27b0);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   FORMULARIO
+   ============================================ */
+
+.muro-formulario-wrapper {
+  max-width: 680px;
+  margin: 0 auto 5rem;
+}
+
+.muro-formulario {
+  background: #fff;
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 40px rgba(233, 30, 140, 0.1), 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(233, 30, 140, 0.1);
+}
+
+.form-titulo {
+  font-family: "TituloPrincipal", serif;
+  font-size: 1.5rem;
+  color: #4a2545;
+  margin: 0 0 1.8rem;
+  text-align: center;
+}
+
+.form-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+  position: relative;
+}
+
+.form-label {
+  font-family: "Parrafo", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #7b5e7b;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.form-fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-input,
+.form-textarea {
+  font-family: "Parrafo", sans-serif;
+  font-size: 1rem;
+  color: #3a1f3a;
+  background: #fdf6fb;
+  border: 1.5px solid #e8cce8;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  resize: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #c2185b;
+  box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.1);
+  background: #fff;
+}
+
+.form-input.error,
+.form-textarea.error {
+  border-color: #e53935;
+}
+
+.form-error {
+  font-family: "Parrafo", sans-serif;
+  font-size: 0.78rem;
+  color: #e53935;
+}
+
+.form-contador {
+  font-family: "Parrafo", sans-serif;
+  font-size: 0.75rem;
+  color: #b39dbb;
+  text-align: right;
+  margin-top: 0.2rem;
+}
+
+/* Selector de emojis */
+.emoji-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.emoji-btn {
+  font-size: 1.5rem;
+  background: #fdf6fb;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s;
+  line-height: 1;
+}
+
+.emoji-btn:hover {
+  transform: scale(1.2);
+  background: #fce4ec;
+}
+
+.emoji-btn.activo {
+  border-color: #c2185b;
+  background: #fce4ec;
+  transform: scale(1.15);
+}
+
+/* Botón enviar */
+.form-btn-enviar {
+  width: 100%;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, #e91e8c, #9c27b0);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: "TituloPrincipal", serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+.form-btn-enviar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(233, 30, 140, 0.35);
+}
+
+.form-btn-enviar:active {
+  transform: translateY(0);
+}
+
+/* Mensaje de éxito */
+.form-exito {
+  margin-top: 1rem;
+  background: #fce4ec;
+  color: #880e4f;
+  border: 1px solid #f48fb1;
+  border-radius: 12px;
+  padding: 0.9rem 1.2rem;
+  font-family: "Parrafo", sans-serif;
+  font-size: 0.95rem;
+  text-align: center;
+  animation: aparecer 0.4s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   MURO DE TARJETAS
+   ============================================ */
+
+.muro-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  columns: 3;
+  column-gap: 1.5rem;
+}
+
+.muro-tarjeta {
+  break-inside: avoid;
+  background: #fff;
+  border-radius: 20px;
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(156, 39, 176, 0.08);
+  border: 1px solid rgba(233, 30, 140, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: entrar 0.5s ease both;
+}
+
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.muro-tarjeta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(156, 39, 176, 0.15);
+}
+
+.tarjeta-emoji {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.tarjeta-comentario {
+  font-family: "Parrafo", sans-serif;
+  font-size: 1rem;
+  color: #4a2545;
+  line-height: 1.75;
+  margin: 0 0 1.4rem;
+  font-style: italic;
+}
+
+.tarjeta-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid #f3e5f5;
+  padding-top: 0.9rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tarjeta-autor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.tarjeta-nombre {
+  font-family: "TituloPrincipal", serif;
+  font-size: 1rem;
+  color: #6a1b5a;
+  font-weight: 700;
+}
+
+.tarjeta-ciudad {
+  font-family: "Parrafo", sans-serif;
+  font-size: 0.78rem;
+  color: #b39dbb;
+}
+
+.tarjeta-fecha {
+  font-family: "Parrafo", sans-serif;
+  font-size: 0.75rem;
+  color: #ce93d8;
+  white-space: nowrap;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+  .muro-grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .muro-titulo {
+    font-size: 2.2rem;
+  }
+
+  .muro-formulario {
+    padding: 1.8rem 1.4rem;
+  }
+
+  .form-fila {
+    grid-template-columns: 1fr;
+  }
+
+  .muro-grid {
+    columns: 1;
+  }
+}

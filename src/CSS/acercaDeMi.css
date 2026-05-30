@@ -478,6 +478,281 @@ cite {
   font-style: normal;
 }
 
+
+/* ============================================
+   REDES SOCIALES EN EL HERO
+   ============================================ */
+
+.hero-redes {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.hero-red-social {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.hero-red-social:hover,
+.hero-red-social:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.hero-red-social.tiktok {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: rgba(105, 201, 208, 0.5);
+}
+
+.hero-red-social.tiktok:hover {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: #69c9d0;
+  color: #69c9d0;
+}
+
+.hero-red-social.facebook {
+  background: rgba(24, 119, 242, 0.45);
+  border-color: rgba(24, 119, 242, 0.7);
+}
+
+.hero-red-social.facebook:hover {
+  background: rgba(24, 119, 242, 0.7);
+  border-color: #1877f2;
+}
+
+@media (max-width: 768px) {
+  .hero-redes {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   DOS FOTOS FLOTANDO JUNTAS
+   ============================================ */
+
+.fotos-duo {
+  position: relative;
+  width: 420px;
+  height: 420px;
+}
+
+.foto-principal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 260px;
+  animation: float 6s ease-in-out infinite;
+  z-index: 2;
+}
+
+.foto-secundaria {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 220px;
+  height: 220px;
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 1.2s;
+  z-index: 1;
+}
+
+.foto-secundaria .decoracion-marco {
+  animation-duration: 15s;
+}
+
+@media (max-width: 768px) {
+  .fotos-duo {
+    width: 300px;
+    height: 300px;
+  }
+
+  .foto-principal {
+    width: 185px;
+    height: 185px;
+  }
+
+  .foto-secundaria {
+    width: 155px;
+    height: 155px;
+  }
+}
+
+/* ============================================
+   FOOTER — visible y con presencia
+   ============================================ */
+
+.footer-artista {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  padding: 3.5rem 2rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-artista::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #ff6b6b, #667eea);
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.footer-contenido {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  text-align: center;
+}
+
+.footer-nombre-bloque {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-titulo {
+  font-family: 'TituloPrincipal', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+
+.footer-subtitulo-texto {
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  color: #a89fc8;
+  text-transform: uppercase;
+  font-family: 'Parrafo', sans-serif;
+}
+
+.footer-divisor {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+  border: none;
+  margin: 0;
+}
+
+.footer-redes-bloque {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-red {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-family: 'Parrafo', sans-serif;
+}
+
+.footer-red.tiktok {
+  background: rgba(255,255,255,0.07);
+  color: #e0d9f5;
+  border: 1.5px solid rgba(105, 201, 208, 0.4);
+}
+
+.footer-red.tiktok:hover {
+  background: rgba(105, 201, 208, 0.15);
+  border-color: #69c9d0;
+  color: #69c9d0;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(105, 201, 208, 0.2);
+}
+
+.footer-red.facebook {
+  background: rgba(24, 119, 242, 0.2);
+  color: #c5d9f8;
+  border: 1.5px solid rgba(24, 119, 242, 0.5);
+}
+
+.footer-red.facebook:hover {
+  background: rgba(24, 119, 242, 0.35);
+  border-color: #1877f2;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);
+}
+
+.footer-copy {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.5rem;
+  width: 100%;
+}
+
+.footer-copy p {
+  font-size: 0.78rem;
+  color: #5a5475;
+  margin: 0;
+  letter-spacing: 0.06em;
+  font-family: 'Parrafo', sans-serif;
+}
+
+@media (max-width: 600px) {
+  .footer-titulo {
+    font-size: 1.5rem;
+  }
+  .footer-redes-bloque {
+    gap: 0.7rem;
+  }
+  .footer-red {
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE GENERAL
+   ============================================ */
+
+@media (max-width: 600px) {
+  .footer-titulo {
+    font-size: 1.4rem;
+  }
+
+  .footer-redes {
+    gap: 0.8rem;
+  }
+
+  .red-social {
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+  }
+}
+
 /* Animaciones */
 @keyframes fadeInUp {
   from {
@@ -570,5 +845,25 @@ cite {
 
   .timeline-item {
     padding-left: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .fotos-duo {
+    width: 320px;
+    height: 260px;
+  }
+
+  .foto-principal {
+    width: 180px;
+    height: 180px;
+    top: 10px;
+    left: 0;
+  }
+
+  .foto-secundaria {
+    width: 160px;
+    height: 160px;
+    bottom: 10px;
+    right: 0;
   }
 }
