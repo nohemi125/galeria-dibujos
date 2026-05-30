@@ -1,6 +1,9 @@
 "use client"
 
 import "../CSS/galeria-estandar.css"
+import { useState, useEffect } from "react"
+import { getLikes, toggleLike as apiToggleLike } from "../api.js"
+
 import dibujo1 from "../assets/boligrafo/dibujo1.jpeg"
 import dibujo2 from "../assets/boligrafo/dibujo2.jpeg"
 import dibujo3 from "../assets/boligrafo/dibujo3.jpeg"
@@ -8,75 +11,36 @@ import dibujo4 from "../assets/boligrafo/dibujo4.jpeg"
 import dibujo5 from "../assets/boligrafo/dibujo5.jpeg"
 import dibujo6 from "../assets/boligrafo/dibujo6.jpeg"
 
-import { useState } from "react"
-
 function BolígrafoColor() {
   const [like, setLike] = useState({})
+  const [likeCounts, setLikeCounts] = useState({})
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
   const [orientacion, setOrientacion] = useState("vertical")
 
+  useEffect(() => {
+    const savedLikes = JSON.parse(localStorage.getItem("boligrafo-likes") || "{}")
+    setLike(savedLikes)
+
+    getLikes().then((data) => {
+      const counts = {}
+      Object.entries(data).forEach(([key, count]) => {
+        if (key.startsWith("boligrafo-")) {
+          const id = parseInt(key.split("-")[1])
+          counts[id] = count
+        }
+      })
+      setLikeCounts(counts)
+    })
+  }, [])
+
   const dibujos = [
-    {
-      id: 1,
-      imagen: dibujo1,
-      año: 2025,
-      titulo: "Frutas y flor",
-      descripcion: "Práctica de colores con frutas y una flor",
-      tiempo: "1 hora",
-      tecnica: "Bolígrafo 10 colores",
-      categoria: "practica",
-    },
-    {
-      id: 2,
-      imagen: dibujo2,
-      año: 2026,
-      titulo: "Tostada",
-      descripcion: "Práctica de texturas y tonos cálidos",
-      tiempo: "1:30 horas",
-      tecnica: "Bolígrafo 10 colores",
-      categoria: "practica",
-    },
-    {
-      id: 3,
-      imagen: dibujo3,
-      año: 2026,
-      titulo: "Hombre anciano",
-      descripcion: "Retrato de un hombre anciano, practicando detalles del rostro",
-      tiempo: "3 horas",
-      tecnica: "Bolígrafo 10 colores",
-      categoria: "practica",
-    },
-    {
-      id: 4,
-      imagen: dibujo4,
-      año: 2026,
-      titulo: "Chica",
-      descripcion: "Retrato de una chica",
-      tiempo: "1 hora",
-      tecnica: "Bolígrafo 10 colores",
-      categoria: "practica",
-    },
-    {
-      id: 5,
-      imagen: dibujo5,
-      año: 2026,
-      titulo: "Mujer con pescados",
-      descripcion: "Composición de una mujer rodeada de pescados",
-      tiempo: "3-4 horas",
-      tecnica: "Bolígrafo 10 colores",
-      categoria: "practica",
-    },
-    {
-      id: 6,
-      imagen: dibujo6,
-      año: 2026,
-      titulo: "Dibujo 6",
-      descripcion: "Práctica con bolígrafo de colores",
-      tiempo: "1 hora",
-      tecnica: "Bolígrafo 10 colores",
-      categoria: "practica",
-    },
+    { id: 1, imagen: dibujo1, año: 2025, tiempo: "1 hora" },
+    { id: 2, imagen: dibujo2, año: 2026, tiempo: "1:30 horas" },
+    { id: 3, imagen: dibujo3, año: 2026, tiempo: "3 horas" },
+    { id: 4, imagen: dibujo4, año: 2026, tiempo: "1 hora" },
+    { id: 5, imagen: dibujo5, año: 2026, tiempo: "3-4 horas" },
+    { id: 6, imagen: dibujo6, año: 2026, tiempo: "1 hora" },
   ]
 
   const handleImageLoad = (e) => {
@@ -84,8 +48,14 @@ function BolígrafoColor() {
     setOrientacion(naturalWidth > naturalHeight ? "horizontal" : "vertical")
   }
 
-  const toggleLike = (id) => {
-    setLike((prev) => ({ ...prev, [id]: !prev[id] }))
+  const handleToggleLike = async (id) => {
+    const imagenId = `boligrafo-${id}`
+    const accion = like[id] ? "unlike" : "like"
+    const newLike = { ...like, [id]: !like[id] }
+    setLike(newLike)
+    localStorage.setItem("boligrafo-likes", JSON.stringify(newLike))
+    const data = await apiToggleLike(imagenId, accion)
+    setLikeCounts((prev) => ({ ...prev, [id]: data.count }))
   }
 
   const abrirModal = (dibujo) => {
@@ -110,10 +80,9 @@ function BolígrafoColor() {
         {dibujos.map((dibujo) => (
           <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
             <div className="imagen-wrapper">
-              <img src={dibujo.imagen || "/placeholder.svg"} alt={dibujo.titulo} />
+              <img src={dibujo.imagen || "/placeholder.svg"} alt={`dibujo-${dibujo.id}`} />
               <div className="overlay-galeria">
                 <div className="overlay-content">
-                  <span className="tecnica-overlay">{dibujo.tecnica}</span>
                   <span className="ver-detalle">Ver Detalle</span>
                 </div>
               </div>
@@ -126,7 +95,7 @@ function BolígrafoColor() {
               <div className="acciones-galeria">
                 <span
                   className="corazon-galeria"
-                  onClick={(e) => { e.stopPropagation(); toggleLike(dibujo.id) }}
+                  onClick={(e) => { e.stopPropagation(); handleToggleLike(dibujo.id) }}
                   style={{ display: "flex", alignItems: "center", gap: 4 }}
                 >
                   {like[dibujo.id] ? (
@@ -138,8 +107,10 @@ function BolígrafoColor() {
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
                   )}
-                  {like[dibujo.id] && (
-                    <span style={{ fontSize: 13, color: "#ff6b6b", fontWeight: 500 }}>1</span>
+                  {(likeCounts[dibujo.id] > 0 || like[dibujo.id]) && (
+                    <span style={{ fontSize: 13, color: "#ff6b6b", fontWeight: 500 }}>
+                      {likeCounts[dibujo.id] || 0}
+                    </span>
                   )}
                 </span>
               </div>
@@ -170,14 +141,11 @@ function BolígrafoColor() {
           >
             <img
               src={imagenSeleccionada.imagen || "/placeholder.svg"}
-              alt={imagenSeleccionada.titulo}
+              alt={`dibujo-${imagenSeleccionada.id}`}
               onLoad={handleImageLoad}
               style={{
-                display: "block",
-                width: "100%",
-                height: "auto",
-                maxHeight: "90vh",
-                objectFit: "contain",
+                display: "block", width: "100%", height: "auto",
+                maxHeight: "90vh", objectFit: "contain",
               }}
             />
 
@@ -210,7 +178,7 @@ function BolígrafoColor() {
               </span>
 
               <span
-                onClick={(e) => { e.stopPropagation(); toggleLike(imagenSeleccionada.id) }}
+                onClick={(e) => { e.stopPropagation(); handleToggleLike(imagenSeleccionada.id) }}
                 style={{ cursor: "pointer" }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg"

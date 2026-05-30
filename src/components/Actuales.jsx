@@ -1,6 +1,9 @@
 "use client"
 
 import "../CSS/galeria-estandar.css"
+import { useState, useEffect } from "react"
+import { getLikes, toggleLike as apiToggleLike } from "../api.js"
+
 import dibujo6 from "../assets/actuales/dibujo6.JPG"
 import dibujo8 from "../assets/actuales/dibujo8.JPG"
 import dibujo10 from "../assets/actuales/dibujo10.jpg"
@@ -27,281 +30,80 @@ import dibujo35 from "../assets/actuales/dibujo35.jpeg"
 import dibujo36 from "../assets/actuales/dibujo36.jpeg"
 import dibujo37 from "../assets/actuales/dibujo37.jpeg"
 
-
-import { useState } from "react"
-
 function Actuales() {
   const [like, setLike] = useState({})
+  const [likeCounts, setLikeCounts] = useState({})
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
   const [orientacion, setOrientacion] = useState("vertical")
+
+  useEffect(() => {
+  // Cargar likes de MongoDB
+  getLikes().then((data) => {
+    const counts = {}
+    Object.entries(data).forEach(([key, count]) => {
+      if (key.startsWith("actuales-")) {
+        const id = parseInt(key.split("-")[1])
+        counts[id] = count
+      }
+    })
+    setLikeCounts(counts)
+  })
+
+  // Cargar qué imágenes likeó este usuario desde localStorage
+  const savedLikes = JSON.parse(localStorage.getItem("actuales-likes") || "{}")
+  setLike(savedLikes)
+}, [])
 
   const handleImageLoad = (e) => {
     const { naturalWidth, naturalHeight } = e.target
     setOrientacion(naturalWidth > naturalHeight ? "horizontal" : "vertical")
   }
 
-  const dibujosActuales = [
-    {
-      id: 6,
-      imagen: dibujo6,
-      año: 2023,
-      titulo: "primeros retratos",
-      descripcion: "Retrato echos por encargos ",
-      tiempo: "1 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-  
-    {
-      id: 8,
-      imagen: dibujo8,
-      año: 2023,
-      titulo: "primeros retratos",
-      descripcion: "Retrato echos por encargos ",
-      tiempo: "1 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 10,
-      imagen: dibujo10,
-      año: 2023,
-      titulo: "primeros retratos",
-      descripcion: "Retrato echos por encargos",
-      tiempo: "12 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 11,
-      imagen: dibujo11,
-      año: 2023,
-      titulo: "Retrato Realista",
-      descripcion: "Retrato de un chico gaandor de una rifa",
-      tiempo: "8 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-   
-    {
-      id: 17,
-      imagen: dibujo17,
-      año: 2023,
-      titulo: "retratos echo por encargos",
-      descripcion: "Retrato de una bebe , ya habia mejorado mucho mas en mis tecnicas",
-      tiempo: "8 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 18,
-      imagen: dibujo18,
-      año: 2023,
-      titulo: "Retrato Realista",
-      descripcion: "Retrato de una pareja, dibujo echo por encargo",
-      tiempo: "15 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 19,
-      imagen: dibujo19,
-      año: 2024,
-      titulo: "dibujo realista de bebe",
-      descripcion: "Retrato de una bebe , echo por encargo, aqui ya habia mejorado mucho mas en mis tecnicas, lo que me tomo mucho tiempo relaizar los detalles del vestido",
-      tiempo: "11 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 20,
-      imagen: dibujo20,
-      año: 2023,
-      titulo: "Retrato en familia",
-      descripcion: "Retrato de una familia, de mis primero envios fuera de mi ciudad (buenaventura)",
-      tiempo: "11 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 21,
-      imagen: dibujo21,
-      año: 2023,
-      titulo: "retratos echo por encargos",
-      descripcion: "de mis primeros envios fuera de mi ciudad (buenaventura)",
-      tiempo: "10 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 22,
-      imagen: dibujo22,
-      año: 2023,
-      titulo: "Practica de sombreado",
-      descripcion: "lo realice en acompañamiento de un curso, para mejorar mis tecnicas de sombreado",
-      tiempo: "15 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 23,
-      imagen: dibujo23,
-      año: 2023,
-      titulo: "Retrato Realista de bebe",
-      descripcion: "Retrato de una bebe, fue un pedido a chigorodo",
-      tiempo: "7 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 24,
-      imagen: dibujo24,
-      año: 2024,
-      titulo: "Practica de sombreado y deatalles pulidos",
-      descripcion: "referencia de pinterest, para practicar sombreado y detalles pulidos",
-      tiempo: "12 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 25,
-      imagen: dibujo25,
-      año: 2023,
-      titulo: "Retrato Realista bebe",
-      descripcion: "mi primer dibujo echo en tamaño grande 50x50cm y enviado a medellin",
-      tiempo: "13 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 26,
-      imagen: dibujo26,
-      año: 2023,
-      titulo: "Retrato Realista bebe",
-      descripcion: "Retrato echos por encargo de personas que ya confiaban en mi trabajo",
-      tiempo: "9 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "pedidos",
-    },
-    {
-      id: 27,
-      imagen: dibujo27,
-      año: 2025,
-      titulo: "dibujos de practica",
-      descripcion: "referencia de pinterest, para practicar sombreado y detalles de pelajes",
-      tiempo: "2 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 28,
-      imagen: dibujo28,
-      año: 2025,
-      titulo: "Rostro Realista",
-      descripcion: "Refrencia de pinterest, practicar luces y sombras en el rostro",
-      tiempo: "18 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 29,
-      imagen: dibujo29,
-      año: 2025,
-      titulo: "Rostro Realista",
-      descripcion: "Refrencia de pinterest, dibujos echo para practicar en ratos libres",
-      tiempo: "2 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 30,
-      imagen: dibujo30,
-      año: 2025,
-      titulo: "gusto por el arte",
-      descripcion: "referencia de pinterest, dibujo echo por gusto personal en mis ratos libres",
-      tiempo: "4 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 31,
-      imagen: dibujo31,
-      año: 2025,
-      titulo: "retrato de bebe realista",
-      descripcion: "retrato por encargo echo para un bebe",
-      tiempo: "13 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 32,
-      imagen: dibujo32,
-      año: 2026,
-      titulo: "retrato realista por encargo",
-      descripcion: "dibujo por encargo enviado a cartagena",
-      tiempo: "14 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 33,
-      imagen: dibujo33,
-      año: 2026,
-      titulo: "retrato realista por encargo",
-      descripcion: "dibujo por encargo para un bebe",
-      tiempo: "8 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 34,
-      imagen: dibujo34,
-      año: 2026,
-      titulo: "retrato realista por encargo",
-      descripcion: "dibujo por encargo para un detalle de cumpleaños, enviado a chigorodo",
-      tiempo: "3 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 35,
-      imagen: dibujo35,
-      año: 2026,
-      titulo: "retrato realista por encargo",
-      descripcion: "dibujo por encargo para un detalle especial de pareja",
-      tiempo: "17 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 36,
-      imagen: dibujo36,
-      año: 2026,
-      titulo: "retrato realista por encargo",
-      descripcion: "dibujo por encargo en confianza a mi trabajo y apoyo a mi arte, enviado a carepa",
-      tiempo: "12 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-    {
-      id: 37,
-      imagen: dibujo37,
-      año: 2026,
-      titulo: "restauracion de foto viaje",
-      descripcion: "retrato echo para restaurar una foto antigua de un viaje de familiar",
-      tiempo: "3 horas",
-      tecnica: "Lápiz grafito",
-      categoria: "practica",
-    },
-  ]
+  const handleToggleLike = async (id) => {
+  const imagenId = `actuales-${id}`
+  const accion = like[id] ? "unlike" : "like"
 
-  const toggleLike = (id) => {
-    setLike((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
-  }
+  // Actualizar estado local
+  const newLike = { ...like, [id]: !like[id] }
+  setLike(newLike)
+
+  // Guardar en localStorage
+  localStorage.setItem("actuales-likes", JSON.stringify(newLike))
+
+  // Guardar en MongoDB
+  const data = await apiToggleLike(imagenId, accion)
+  setLikeCounts((prev) => ({ ...prev, [id]: data.count }))
+}
+
+
+  const dibujosActuales = [
+    { id: 6,  imagen: dibujo6,  año: 2023, tiempo: "1 hora" },
+    { id: 8,  imagen: dibujo8,  año: 2023, tiempo: "1 hora" },
+    { id: 10, imagen: dibujo10, año: 2023, tiempo: "12 horas" },
+    { id: 11, imagen: dibujo11, año: 2023, tiempo: "8 horas" },
+    { id: 17, imagen: dibujo17, año: 2023, tiempo: "8 horas" },
+    { id: 18, imagen: dibujo18, año: 2023, tiempo: "15 horas" },
+    { id: 19, imagen: dibujo19, año: 2024, tiempo: "11 horas" },
+    { id: 20, imagen: dibujo20, año: 2023, tiempo: "11 horas" },
+    { id: 21, imagen: dibujo21, año: 2023, tiempo: "10 horas" },
+    { id: 22, imagen: dibujo22, año: 2023, tiempo: "15 horas" },
+    { id: 23, imagen: dibujo23, año: 2023, tiempo: "7 horas" },
+    { id: 24, imagen: dibujo24, año: 2024, tiempo: "12 horas" },
+    { id: 25, imagen: dibujo25, año: 2023, tiempo: "13 horas" },
+    { id: 26, imagen: dibujo26, año: 2023, tiempo: "9 horas" },
+    { id: 27, imagen: dibujo27, año: 2025, tiempo: "2 horas" },
+    { id: 28, imagen: dibujo28, año: 2025, tiempo: "18 horas" },
+    { id: 29, imagen: dibujo29, año: 2025, tiempo: "2 horas" },
+    { id: 30, imagen: dibujo30, año: 2025, tiempo: "4 horas" },
+    { id: 31, imagen: dibujo31, año: 2025, tiempo: "13 horas" },
+    { id: 32, imagen: dibujo32, año: 2026, tiempo: "14 horas" },
+    { id: 33, imagen: dibujo33, año: 2026, tiempo: "8 horas" },
+    { id: 34, imagen: dibujo34, año: 2026, tiempo: "3 horas" },
+    { id: 35, imagen: dibujo35, año: 2026, tiempo: "17 horas" },
+    { id: 36, imagen: dibujo36, año: 2026, tiempo: "12 horas" },
+    { id: 37, imagen: dibujo37, año: 2026, tiempo: "3 horas" },
+  ]
 
   const abrirModal = (dibujo) => {
     setImagenSeleccionada(dibujo)
@@ -322,52 +124,47 @@ function Actuales() {
       </div>
 
       <div className="galeria-grid">
-  {dibujosActuales.map((dibujo) => (
-    <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
-      <div className="imagen-wrapper">
-        <img src={dibujo.imagen || "/placeholder.svg"} alt={dibujo.titulo} />
-        <div className="overlay-galeria">
-          <div className="overlay-content">
-            <span className="tecnica-overlay">{dibujo.tecnica}</span>
-            <span className="ver-detalle">Ver Detalle</span>
-          </div>
-        </div>
-      </div>
+        {dibujosActuales.map((dibujo) => (
+          <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
+            <div className="imagen-wrapper">
+              <img src={dibujo.imagen || "/placeholder.svg"} alt={`dibujo-${dibujo.id}`} />
+              <div className="overlay-galeria">
+                <div className="overlay-content">
+                  <span className="ver-detalle">Ver Detalle</span>
+                </div>
+              </div>
+            </div>
 
-      <div className="info-galeria">
-        <div className="meta-info">
-          <span className="año-galeria">Año: {dibujo.año}</span>
-        </div>
-        <div className="acciones-galeria">
-          <span
-            className="corazon-galeria"
-            onClick={(e) => {
-              e.stopPropagation()
-              toggleLike(dibujo.id)
-            }}
-            style={{ display: "flex", alignItems: "center", gap: 4 }}
-          >
-            {like[dibujo.id] ? (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="#ff6b6b" stroke="#ff6b6b" strokeWidth="2" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ff6b6b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-              </svg>
-            )}
-            {/* Contador — solo muestra el número si hay al menos 1 like */}
-            {like[dibujo.id] && (
-              <span style={{ fontSize: 13, color: "#ff6b6b", fontWeight: 500 }}>
-                1
-              </span>
-            )}
-          </span>
-        </div>
+            <div className="info-galeria">
+              <div className="meta-info">
+                <span className="año-galeria">Año: {dibujo.año}</span>
+              </div>
+              <div className="acciones-galeria">
+                <span
+                  className="corazon-galeria"
+                  onClick={(e) => { e.stopPropagation(); handleToggleLike(dibujo.id) }}
+                  style={{ display: "flex", alignItems: "center", gap: 4 }}
+                >
+                  {like[dibujo.id] ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ff6b6b" stroke="#ff6b6b" strokeWidth="2" width="24" height="24" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ff6b6b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  )}
+                  {(likeCounts[dibujo.id] > 0 || like[dibujo.id]) && (
+                    <span style={{ fontSize: 13, color: "#ff6b6b", fontWeight: 500 }}>
+                      {likeCounts[dibujo.id] || 0}
+                    </span>
+                  )}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-  ))}
-</div>
 
       {/* Modal */}
       {modalAbierto && imagenSeleccionada && (
@@ -391,14 +188,11 @@ function Actuales() {
           >
             <img
               src={imagenSeleccionada.imagen || "/placeholder.svg"}
-              alt={imagenSeleccionada.titulo}
+              alt={`dibujo-${imagenSeleccionada.id}`}
               onLoad={handleImageLoad}
               style={{
-                display: "block",
-                width: "100%",
-                height: "auto",
-                maxHeight: "90vh",
-                objectFit: "contain",
+                display: "block", width: "100%", height: "auto",
+                maxHeight: "90vh", objectFit: "contain",
               }}
             />
 
@@ -431,7 +225,7 @@ function Actuales() {
               </span>
 
               <span
-                onClick={(e) => { e.stopPropagation(); toggleLike(imagenSeleccionada.id); }}
+                onClick={(e) => { e.stopPropagation(); handleToggleLike(imagenSeleccionada.id) }}
                 style={{ cursor: "pointer" }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg"

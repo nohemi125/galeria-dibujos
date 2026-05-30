@@ -1,40 +1,23 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "../CSS/muroDeAmor.css"
+import { getComentarios, addComentario } from "../api.js"
 
 const EMOJIS = ["❤️", "🎨", "✨", "🔥", "😍", "🌟", "💫", "🙌"]
 
-const comentariosIniciales = [
-  {
-    id: 1,
-    nombre: "Valentina",
-    ciudad: "Bogotá, Colombia",
-    comentario: "Tu arte me deja sin palabras, cada trazo tiene una vida propia. ¡Eres increíble!",
-    emoji: "✨",
-    fecha: "Mayo 2025",
-  },
-  {
-    id: 2,
-    nombre: "Carlos",
-    ciudad: "Medellín, Colombia",
-    comentario: "Los retratos que haces parecen fotos, es impresionante lo que logras con un lápiz.",
-    emoji: "🎨",
-    fecha: "Abril 2025",
-  },
-  {
-    id: 3,
-    nombre: "Sofía",
-    ciudad: "Ciudad de México",
-    comentario: "Encontré tu galería por casualidad y me quedé más de una hora viendo cada dibujo. ¡Talento puro!",
-    emoji: "❤️",
-    fecha: "Abril 2025",
-  },
-]
-
 function MuroDeAmor() {
-  const [comentarios, setComentarios] = useState(comentariosIniciales)
+  const [comentarios, setComentarios] = useState([])
+  const [cargando, setCargando] = useState(true)
   const [form, setForm] = useState({ nombre: "", ciudad: "", comentario: "", emoji: "❤️" })
   const [errores, setErrores] = useState({})
   const [enviado, setEnviado] = useState(false)
+  const [enviando, setEnviando] = useState(false)
+
+  useEffect(() => {
+    getComentarios()
+      .then((data) => setComentarios(data))
+      .catch((err) => console.error("Error cargando comentarios", err))
+      .finally(() => setCargando(false))
+  }, [])
 
   const validar = () => {
     const e = {}
@@ -45,25 +28,31 @@ function MuroDeAmor() {
     return e
   }
 
-  const handleEnviar = () => {
+  const handleEnviar = async () => {
     const e = validar()
     if (Object.keys(e).length > 0) { setErrores(e); return }
 
-    const nuevo = {
-      id: Date.now(),
-      nombre: form.nombre.trim(),
-      ciudad: form.ciudad.trim(),
-      comentario: form.comentario.trim(),
-      emoji: form.emoji,
-      fecha: new Date().toLocaleDateString("es-CO", { month: "long", year: "numeric" }),
-    }
+    setEnviando(true)
+    const fecha = new Date().toLocaleDateString("es-CO", { month: "long", year: "numeric" })
 
-    // Cuando conectes la base de datos, reemplaza esta línea por tu llamada a la API
-    setComentarios([nuevo, ...comentarios])
-    setForm({ nombre: "", ciudad: "", comentario: "", emoji: "❤️" })
-    setErrores({})
-    setEnviado(true)
-    setTimeout(() => setEnviado(false), 3500)
+    try {
+      const nuevo = await addComentario(
+        form.comentario.trim(),
+        form.nombre.trim(),
+        form.ciudad.trim(),
+        form.emoji,
+        fecha,
+      )
+      setComentarios([nuevo, ...comentarios])
+      setForm({ nombre: "", ciudad: "", comentario: "", emoji: "❤️" })
+      setErrores({})
+      setEnviado(true)
+      setTimeout(() => setEnviado(false), 3500)
+    } catch (err) {
+      console.error("Error enviando comentario", err)
+    } finally {
+      setEnviando(false)
+    }
   }
 
   return (
@@ -74,7 +63,7 @@ function MuroDeAmor() {
         <div className="muro-corona">💌</div>
         <h2 className="muro-titulo">Muro de Amor</h2>
         <p className="muro-subtitulo">
-          ¿Cuál fue tu dibujo favorito? Me gustaría saber cual te gustó más. Cada comentario me anima a seguir creando🤍
+          ¿Cuál fue tu dibujo favorito? Me gustaría saber cuál te gustó más. Cada comentario me anima a seguir creando 🤍
         </p>
         <div className="muro-linea"></div>
       </div>
@@ -102,7 +91,7 @@ function MuroDeAmor() {
             </div>
           </div>
 
-          {/* Nombre y ciudad en fila */}
+          {/* Nombre y ciudad */}
           <div className="form-fila">
             <div className="form-grupo">
               <label className="form-label">Tu nombre</label>
@@ -146,8 +135,8 @@ function MuroDeAmor() {
             {errores.comentario && <span className="form-error">{errores.comentario}</span>}
           </div>
 
-          <button className="form-btn-enviar" onClick={handleEnviar}>
-            Enviar mensaje {form.emoji}
+          <button className="form-btn-enviar" onClick={handleEnviar} disabled={enviando}>
+            {enviando ? "Enviando..." : `Enviar mensaje ${form.emoji}`}
           </button>
 
           {enviado && (
@@ -159,25 +148,35 @@ function MuroDeAmor() {
       </div>
 
       {/* Muro de tarjetas */}
-      <div className="muro-grid">
-        {comentarios.map((c, i) => (
-          <div
-            key={c.id}
-            className="muro-tarjeta"
-            style={{ animationDelay: `${i * 0.08}s` }}
-          >
-            <div className="tarjeta-emoji">{c.emoji}</div>
-            <p className="tarjeta-comentario">"{c.comentario}"</p>
-            <div className="tarjeta-footer">
-              <div className="tarjeta-autor">
-                <span className="tarjeta-nombre">{c.nombre}</span>
-                <span className="tarjeta-ciudad">📍 {c.ciudad}</span>
+      {cargando ? (
+        <p style={{ textAlign: "center", color: "#aaa", padding: "2rem" }}>Cargando mensajes...</p>
+      ) : (
+        <div className="muro-grid">
+          {comentarios.length === 0 ? (
+            <p style={{ textAlign: "center", color: "#aaa", gridColumn: "1/-1" }}>
+              Sé el primero en dejar un mensaje 🤍
+            </p>
+          ) : (
+            comentarios.map((c, i) => (
+              <div
+                key={c._id || c.id}
+                className="muro-tarjeta"
+                style={{ animationDelay: `${i * 0.08}s` }}
+              >
+                <div className="tarjeta-emoji">{c.emoji}</div>
+                <p className="tarjeta-comentario">"{c.comentario}"</p>
+                <div className="tarjeta-footer">
+                  <div className="tarjeta-autor">
+                    <span className="tarjeta-nombre">{c.nombre}</span>
+                    <span className="tarjeta-ciudad">📍 {c.ciudad}</span>
+                  </div>
+                  <span className="tarjeta-fecha">{c.fecha}</span>
+                </div>
               </div>
-              <span className="tarjeta-fecha">{c.fecha}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+            ))
+          )}
+        </div>
+      )}
 
     </section>
   )

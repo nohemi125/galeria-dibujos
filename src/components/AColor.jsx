@@ -1,6 +1,9 @@
 "use client"
 
 import "../CSS/galeria-estandar.css"
+import { useState, useEffect } from "react"
+import { getLikes, toggleLike as apiToggleLike } from "../api.js"
+
 import dibujo1 from "../assets/acolor/dibujo1.JPG"
 import dibujo2 from "../assets/acolor/dibujo2.JPG"
 import dibujo3 from "../assets/acolor/dibujo3.JPG"
@@ -14,135 +17,42 @@ import dibujo10 from "../assets/acolor/dibujo10.jpg"
 import dibujo11 from "../assets/acolor/dibujo11.jpeg"
 import dibujo12 from "../assets/acolor/dibujo12.jpeg"
 
-import { useState } from "react"
-
 function AColor() {
   const [like, setLike] = useState({})
+  const [likeCounts, setLikeCounts] = useState({})
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
   const [orientacion, setOrientacion] = useState("vertical")
 
+  useEffect(() => {
+    const savedLikes = JSON.parse(localStorage.getItem("acolor-likes") || "{}")
+    setLike(savedLikes)
+
+    getLikes().then((data) => {
+      const counts = {}
+      Object.entries(data).forEach(([key, count]) => {
+        if (key.startsWith("acolor-")) {
+          const id = parseInt(key.split("-")[1])
+          counts[id] = count
+        }
+      })
+      setLikeCounts(counts)
+    })
+  }, [])
+
   const dibujosColor = [
-    {
-      id: 1,
-      imagen: dibujo1,
-      año: 2023,
-      titulo: "Ave Tucan",
-      descripcion: "Referencia tomada de pinterest",
-      tiempo: "3 horas",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "naturaleza",
-    },
-    {
-      id: 2,
-      imagen: dibujo2,
-      año: 2023,
-      titulo: "Will Smith",
-      descripcion: "mi segundo intento, sin ninguna instruccion a seguir",
-      tiempo: "15+ horas",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "retrato",
-    },
-    {
-      id: 3,
-      imagen: dibujo3,
-      año: 2024,
-      titulo: "Bad Bunny",
-      descripcion: "referencia tomada de pinterest, mi tercer intento",
-      tiempo: "2 horas",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "retrato",
-    },
-    {
-      id: 4,
-      imagen: dibujo4,
-      año: 2023,
-      titulo: "Morgan Freeman",
-      descripcion: "mi primer dibujo con colores, viendo videos del curso soy danny",
-      tiempo: "15+ horas",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "retrato",
-    },
-    {
-      id: 5,
-      imagen: dibujo5,
-      año: 2025,
-      titulo: "Practica de Lápices de colores",
-      descripcion: "practica que uso para manejar degrado en color",
-      tiempo: "1 hora",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "objeto",
-    },
-    {
-      id: 6,
-      imagen: dibujo6,
-      año: 2025,
-      titulo: "Manzana Verde - Practica de Lápices de colores",
-      descripcion: "practica que uso para manejar degrado en color",
-      tiempo: "1 hora",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "objeto",
-    },
-    {
-      id: 7,
-      imagen: dibujo7,
-      año: 2025,
-      titulo: "Uva - Practica de Lápices de colores",
-      descripcion: "practica que uso para manejar degrado en color",
-      tiempo: "1 hora",
-      tecnica: "Marcadores Touch y lapices de colores",
-      categoria: "objeto",
-    },
-    {
-      id: 8,
-      imagen: dibujo8,
-      año: 2024,
-      titulo: "Amarilla - Practica de Lápices de colores",
-      descripcion: "practica que uso para manejar degrado en color",
-      tiempo: "1 hora",
-      tecnica: "Lápices de colores Prisma Color",
-      categoria: "objeto",
-    },
-    {
-      id: 9,
-      imagen: dibujo9,
-      año: 2025,
-      titulo: "Casa - Practica de Marcadores Touch",
-      descripcion: "practica que uso para manejar degrado en color",
-      tiempo: "1 hora",
-      tecnica: "Marcadores Touch",
-      categoria: "objeto",
-    },
-    {
-      id: 10,
-      imagen: dibujo10,
-      año: 2025,
-      titulo: "alien",
-      descripcion: "dibujo relizado para mejorar el manejo de colores y degradados",
-      tiempo: "4 horas",
-      tecnica: "colores prismacolor",
-      categoria: "retrato",
-    },
-    {
-      id: 11,
-      imagen: dibujo11,
-      año: 2025,
-      titulo: "ojo",
-      descripcion: "dibujo relizado con los 3 colores primarios para mejorar el manejo de colores y degradados",
-      tiempo: "4 horas",
-      tecnica: "colores prismacolor",
-      categoria: "retrato",
-    },
-    {
-      id: 12,
-      imagen: dibujo12,
-      año: 2025,
-      titulo: "paisaje",
-      descripcion: "practica para mejorar el manejo de colores y degradados",
-      tiempo: "4 horas",
-      tecnica: "colores prismacolor",
-      categoria: "retrato",
-    },
+    { id: 1,  imagen: dibujo1,  año: 2023, tiempo: "3 horas" },
+    { id: 2,  imagen: dibujo2,  año: 2023, tiempo: "15+ horas" },
+    { id: 3,  imagen: dibujo3,  año: 2024, tiempo: "2 horas" },
+    { id: 4,  imagen: dibujo4,  año: 2023, tiempo: "15+ horas" },
+    { id: 5,  imagen: dibujo5,  año: 2025, tiempo: "1 hora" },
+    { id: 6,  imagen: dibujo6,  año: 2025, tiempo: "1 hora" },
+    { id: 7,  imagen: dibujo7,  año: 2025, tiempo: "1 hora" },
+    { id: 8,  imagen: dibujo8,  año: 2024, tiempo: "1 hora" },
+    { id: 9,  imagen: dibujo9,  año: 2025, tiempo: "1 hora" },
+    { id: 10, imagen: dibujo10, año: 2025, tiempo: "4 horas" },
+    { id: 11, imagen: dibujo11, año: 2025, tiempo: "4 horas" },
+    { id: 12, imagen: dibujo12, año: 2025, tiempo: "4 horas" },
   ]
 
   const handleImageLoad = (e) => {
@@ -150,11 +60,14 @@ function AColor() {
     setOrientacion(naturalWidth > naturalHeight ? "horizontal" : "vertical")
   }
 
-  const toggleLike = (id) => {
-    setLike((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
+  const handleToggleLike = async (id) => {
+    const imagenId = `acolor-${id}`
+    const accion = like[id] ? "unlike" : "like"
+    const newLike = { ...like, [id]: !like[id] }
+    setLike(newLike)
+    localStorage.setItem("acolor-likes", JSON.stringify(newLike))
+    const data = await apiToggleLike(imagenId, accion)
+    setLikeCounts((prev) => ({ ...prev, [id]: data.count }))
   }
 
   const abrirModal = (dibujo) => {
@@ -179,10 +92,9 @@ function AColor() {
         {dibujosColor.map((dibujo) => (
           <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
             <div className="imagen-wrapper">
-              <img src={dibujo.imagen || "/placeholder.svg"} alt={dibujo.titulo} />
+              <img src={dibujo.imagen || "/placeholder.svg"} alt={`dibujo-${dibujo.id}`} />
               <div className="overlay-galeria">
                 <div className="overlay-content">
-                  <span className="tecnica-overlay">{dibujo.tecnica}</span>
                   <span className="ver-detalle">Ver Detalle</span>
                 </div>
               </div>
@@ -195,10 +107,7 @@ function AColor() {
               <div className="acciones-galeria">
                 <span
                   className="corazon-galeria"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    toggleLike(dibujo.id)
-                  }}
+                  onClick={(e) => { e.stopPropagation(); handleToggleLike(dibujo.id) }}
                   style={{ display: "flex", alignItems: "center", gap: 4 }}
                 >
                   {like[dibujo.id] ? (
@@ -210,8 +119,10 @@ function AColor() {
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
                   )}
-                  {like[dibujo.id] && (
-                    <span style={{ fontSize: 13, color: "#ff6b6b", fontWeight: 500 }}>1</span>
+                  {(likeCounts[dibujo.id] > 0 || like[dibujo.id]) && (
+                    <span style={{ fontSize: 13, color: "#ff6b6b", fontWeight: 500 }}>
+                      {likeCounts[dibujo.id] || 0}
+                    </span>
                   )}
                 </span>
               </div>
@@ -242,14 +153,11 @@ function AColor() {
           >
             <img
               src={imagenSeleccionada.imagen || "/placeholder.svg"}
-              alt={imagenSeleccionada.titulo}
+              alt={`dibujo-${imagenSeleccionada.id}`}
               onLoad={handleImageLoad}
               style={{
-                display: "block",
-                width: "100%",
-                height: "auto",
-                maxHeight: "90vh",
-                objectFit: "contain",
+                display: "block", width: "100%", height: "auto",
+                maxHeight: "90vh", objectFit: "contain",
               }}
             />
 
@@ -282,7 +190,7 @@ function AColor() {
               </span>
 
               <span
-                onClick={(e) => { e.stopPropagation(); toggleLike(imagenSeleccionada.id); }}
+                onClick={(e) => { e.stopPropagation(); handleToggleLike(imagenSeleccionada.id) }}
                 style={{ cursor: "pointer" }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg"

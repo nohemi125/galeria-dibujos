@@ -1,6 +1,9 @@
 "use client"
 
 import "../CSS/galeria-estandar.css"
+import { useState, useEffect } from "react"
+import { getLikes, toggleLike as apiToggleLike } from "../api.js"
+
 import dibujo1 from "../assets/Comienzos/dibujo1.JPG"
 import dibujo2 from "../assets/Comienzos/dibujo2.JPG"
 import dibujo3 from "../assets/Comienzos/dibujo3.jpg"
@@ -39,55 +42,67 @@ import dibujo36 from "../assets/Comienzos/dibujo36.jpg"
 import dibujo37 from "../assets/Comienzos/dibujo37.jpg"
 import dibujo38 from "../assets/Comienzos/dibujo38.jpg"
 
-
-
-import { useState } from "react"
-
 function Comienzos() {
   const [like, setLike] = useState({})
+  const [likeCounts, setLikeCounts] = useState({})
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
   const [orientacion, setOrientacion] = useState("vertical")
 
-  const dibujosComienzos = [
-    { id: 1, imagen: dibujo1, año: 2023, titulo: "practica de rostro", descripcion: "practica de rostro, referencia de pinterest", tiempo: "3 horas", tecnica: "Lápiz grafito", categoria: "practica" },
-    { id: 2, imagen: dibujo2, año: 2023, titulo: "Retrato", descripcion: "reto de dibujos retrato en una hora", tiempo: "1 hora", tecnica: "Lápiz 2B-6B", categoria: "pedidos" },
-    { id: 3, imagen: dibujo4, año: 2023, titulo: "practica de rostro", descripcion: "reto de dibujos retrato en una hora", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "pedidos" },
-    { id: 4, imagen: dibujo5, año: 2023, titulo: "practica de tiempo", descripcion: "practica de tiempo", tiempo: "1 minuto", tecnica: "Lápiz grafito", categoria: "practica" },
-    { id: 5, imagen: dibujo6, año: 2023, titulo: "practica de animales", descripcion: "practica de posicion de potros", tiempo: "20 minutos", tecnica: "Lápiz grafito", categoria: "practica" },
-    { id: 6, imagen: dibujo7, año: 2023, titulo: "practica de felinos", descripcion: "dibunjando los distintos felinos", tiempo: "20 minutos", tecnica: "Lápiz grafito", categoria: "practica" },
-    { id: 7, imagen: dibujo8, año: 2023, titulo: "practica de rostro como detalle", descripcion: "dibujo que realice para una amiga por su cumpleaños", tiempo: "2 horas", tecnica: "Lápiz grafito", categoria: "regalos" },
-    { id: 8, imagen: dibujo9, año: 2023, titulo: "practica de rostro como detalle", descripcion: "dibujo que realice para una amiga que quieria su retrato", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "regalos" },
-    { id: 9, imagen: dibujo10, año: 2023, titulo: "practica de rostro como detalle", descripcion: "dibujo que realice para una amiga que quieria su retrato", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "regalos" },
-    { id: 10, imagen: dibujo11, año: 2023, titulo: "practica de rostro como detalle", descripcion: "detalle que realice para la abuela", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "regalos" },
-    { id: 11, imagen: dibujo12, año: 2022, titulo: "practica de rostro como detalle", descripcion: "dibujo que realice para una amiga que quieria su retrato", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "regalos" },
-    { id: 12, imagen: dibujo13, año: 2022, titulo: "practica de rostro como detalle", descripcion: "dibujo que realice para una amiga que quieria su retrato", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "regalos" },
-    { id: 13, imagen: dibujo14, año: 2022, titulo: "practica de rostro como detalle", descripcion: "dibujo que realice para una amiga que quieria su retrato", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "regalos" },
-    { id: 14, imagen: dibujo15, año: 2023, titulo: "practica de rostro como detalle", descripcion: "detalle que realice para un primo", tiempo: "2 horas", tecnica: "Lápiz grafito", categoria: "regalos" },
-    { id: 15, imagen: dibujo16, año: 2023, titulo: "practica de bebe", descripcion: "practica para mejorar mi tecnica, referencia de pinteres", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "practica" },
-    { id: 16, imagen: dibujo17, año: 2022, titulo: "practica de rostro", descripcion: "retratos que realice sin usar ninguna tecnica de dibujo", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "Primeros Retratos" },
-    { id: 17, imagen: dibujo18, año: 2022, titulo: "practica de rostro", descripcion: "retratos que realice sin usar ninguna tecnica de dibujo", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "Primeros Retratos" },
-    { id: 18, imagen: dibujo19, año: 2022, titulo: "practica de rostro como detalle", descripcion: "retratos que realice sin usar ninguna tecnica de dibujo", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "Primeros Retratos" },
-    { id: 19, imagen: dibujo20, año: 2022, titulo: "practica de bebe", descripcion: "practicando para mejorar, y tomando imagenes de refencia de pinterst", tiempo: "30 minutos", tecnica: "Lápiz grafito", categoria: "practica" },
-    { id: 20, imagen: dibujo21, año: 2022, titulo: "practica", descripcion: "practicando para mejorar, refencia de pinterst", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "practica" },
-    { id: 21, imagen: dibujo22, año: 2022, titulo: "Anne Hathaway", descripcion: "practica rostros, despues de descubrir mi talento", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "Primeros Retratos" },
-    { id: 22, imagen: dibujo23, año: 2022, titulo: "Mama", descripcion: "practica rostros, despues de descubrir mi talento", tiempo: "3 horas", tecnica: "Lápiz grafito", categoria: "Primeros Retratos" },
-    { id: 23, imagen: dibujo24, año: 2022, titulo: "primeros pedidos", descripcion: "primeros encargos, lo hice sin realizar ninguna tecnica de dibujo", tiempo: "4 horas", tecnica: "Lápiz grafito", categoria: "Primeros pedidos" },
-    { id: 24, imagen: dibujo25, año: 2023, titulo: "practica", descripcion: "practica de dibujo, referencia de pinterst", tiempo: "20 minutos", tecnica: "Lápiz grafito", categoria: "Primeros Retratos" },
-    { id: 26, imagen: dibujo27, año: 2023, titulo: "rostro boligrafo", descripcion: "primer dibujo hecho con boligrafo", tiempo: "20 minutos", tecnica: "Lápiz grafito", categoria: "practica" },
-    { id: 27, imagen: dibujo28, año: 2023, titulo: "pez Koi", descripcion: "referencias de pinterst", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "practica" },
-    { id: 28, imagen: dibujo29, año: 2023, titulo: "primeros pedidos", descripcion: "un amigo me pidio dibujar a su esposa", tiempo: "1 hora", tecnica: "Lápiz grafito", categoria: "detalles" },
-    { id: 29, imagen: dibujo30, año: 2023, titulo: "primeros pedidos", descripcion: "primeros pedidos despues aprender mas tecticas", tiempo: "10 horas", tecnica: "Lápiz grafito", categoria: "primeros pedidos" },
-    { id: 30, imagen: dibujo3, año: 2022, titulo: "practica detalles", descripcion: "primeros pedidos despues aprender mas tecticas", tiempo: "15 horas", tecnica: "Lápiz grafito", categoria: "Primeros Retratos" },
-    { id: 31, imagen: dibujo31, año: 2022, titulo: "primeros pedidos", descripcion: "primeros pedidos despues aprender mas tecticas", tiempo: "15 horas", tecnica: "Lápiz grafito", categoria: "primeros pedidos" },
-    { id: 32, imagen: dibujo32, año: 2022, titulo: "primeros pedidos", descripcion: "primeros pedidos despues aprender mas tecticas", tiempo: "15 horas", tecnica: "Lápiz grafito", categoria: "primeros pedidos" },
-    { id: 33, imagen: dibujo33, año: 2022, titulo: "primeros pedidos", descripcion: "primeros pedidos despues aprender mas tecticas", tiempo: "15 horas", tecnica: "Lápiz grafito", categoria: "primeros pedidos" },
-    { id: 34, imagen: dibujo34, año: 2023, titulo: "practica detalles", descripcion: "practica para aprender mas tecticas", tiempo: "15 horas", tecnica: "Lápiz grafito", categoria: "primeros pedidos" },
-    { id: 35, imagen: dibujo35, año: 2023, titulo: "practica detalles", descripcion: "practica para aprender mas tecticas", tiempo: "15 horas", tecnica: "Lápiz grafito", categoria: "primeros pedidos" },
-    { id: 36, imagen: dibujo36, año: 2023, titulo: "practica detalles", descripcion: "practica para aprender mas tecticas", tiempo: "15 horas", tecnica: "Lápiz grafito", categoria: "primeros pedidos" },
-    { id: 37, imagen: dibujo37, año: 2023, titulo: "practica detalles", descripcion: "practica para aprender mas tecticas", tiempo: "15 horas", tecnica: "Lápiz grafito", categoria: "primeros pedidos" },
-    { id: 38, imagen: dibujo38, año: 2023, titulo: "practica detalles", descripcion: "practica para aprender mas tecticas", tiempo: "15 horas", tecnica: "Lápiz grafito", categoria: "primeros pedidos" },
+  useEffect(() => {
+    const savedLikes = JSON.parse(localStorage.getItem("comienzos-likes") || "{}")
+    setLike(savedLikes)
 
+    getLikes().then((data) => {
+      const counts = {}
+      Object.entries(data).forEach(([key, count]) => {
+        if (key.startsWith("comienzos-")) {
+          const id = parseInt(key.split("-")[1])
+          counts[id] = count
+        }
+      })
+      setLikeCounts(counts)
+    })
+  }, [])
+
+  const dibujosComienzos = [
+    { id: 1,  imagen: dibujo1,  año: 2023, tiempo: "3 horas" },
+    { id: 2,  imagen: dibujo2,  año: 2023, tiempo: "1 hora" },
+    { id: 3,  imagen: dibujo4,  año: 2023, tiempo: "1 hora" },
+    { id: 4,  imagen: dibujo5,  año: 2023, tiempo: "1 minuto" },
+    { id: 5,  imagen: dibujo6,  año: 2023, tiempo: "20 minutos" },
+    { id: 6,  imagen: dibujo7,  año: 2023, tiempo: "20 minutos" },
+    { id: 7,  imagen: dibujo8,  año: 2023, tiempo: "2 horas" },
+    { id: 8,  imagen: dibujo9,  año: 2023, tiempo: "1 hora" },
+    { id: 9,  imagen: dibujo10, año: 2023, tiempo: "1 hora" },
+    { id: 10, imagen: dibujo11, año: 2023, tiempo: "1 hora" },
+    { id: 11, imagen: dibujo12, año: 2022, tiempo: "1 hora" },
+    { id: 12, imagen: dibujo13, año: 2022, tiempo: "1 hora" },
+    { id: 13, imagen: dibujo14, año: 2022, tiempo: "1 hora" },
+    { id: 14, imagen: dibujo15, año: 2023, tiempo: "2 horas" },
+    { id: 15, imagen: dibujo16, año: 2023, tiempo: "1 hora" },
+    { id: 16, imagen: dibujo17, año: 2022, tiempo: "1 hora" },
+    { id: 17, imagen: dibujo18, año: 2022, tiempo: "1 hora" },
+    { id: 18, imagen: dibujo19, año: 2022, tiempo: "1 hora" },
+    { id: 19, imagen: dibujo20, año: 2022, tiempo: "30 minutos" },
+    { id: 20, imagen: dibujo21, año: 2022, tiempo: "1 hora" },
+    { id: 21, imagen: dibujo22, año: 2022, tiempo: "1 hora" },
+    { id: 22, imagen: dibujo23, año: 2022, tiempo: "3 horas" },
+    { id: 23, imagen: dibujo24, año: 2022, tiempo: "4 horas" },
+    { id: 24, imagen: dibujo25, año: 2023, tiempo: "20 minutos" },
+    { id: 26, imagen: dibujo27, año: 2023, tiempo: "20 minutos" },
+    { id: 27, imagen: dibujo28, año: 2023, tiempo: "1 hora" },
+    { id: 28, imagen: dibujo29, año: 2023, tiempo: "1 hora" },
+    { id: 29, imagen: dibujo30, año: 2023, tiempo: "10 horas" },
+    { id: 30, imagen: dibujo3,  año: 2022, tiempo: "15 horas" },
+    { id: 31, imagen: dibujo31, año: 2022, tiempo: "15 horas" },
+    { id: 32, imagen: dibujo32, año: 2022, tiempo: "15 horas" },
+    { id: 33, imagen: dibujo33, año: 2022, tiempo: "15 horas" },
+    { id: 34, imagen: dibujo34, año: 2023, tiempo: "15 horas" },
+    { id: 35, imagen: dibujo35, año: 2023, tiempo: "15 horas" },
+    { id: 36, imagen: dibujo36, año: 2023, tiempo: "15 horas" },
+    { id: 37, imagen: dibujo37, año: 2023, tiempo: "15 horas" },
+    { id: 38, imagen: dibujo38, año: 2023, tiempo: "15 horas" },
   ]
 
   const handleImageLoad = (e) => {
@@ -95,8 +110,14 @@ function Comienzos() {
     setOrientacion(naturalWidth > naturalHeight ? "horizontal" : "vertical")
   }
 
-  const toggleLike = (id) => {
-    setLike((prev) => ({ ...prev, [id]: !prev[id] }))
+  const handleToggleLike = async (id) => {
+    const imagenId = `comienzos-${id}`
+    const accion = like[id] ? "unlike" : "like"
+    const newLike = { ...like, [id]: !like[id] }
+    setLike(newLike)
+    localStorage.setItem("comienzos-likes", JSON.stringify(newLike))
+    const data = await apiToggleLike(imagenId, accion)
+    setLikeCounts((prev) => ({ ...prev, [id]: data.count }))
   }
 
   const abrirModal = (dibujo) => {
@@ -121,10 +142,9 @@ function Comienzos() {
         {dibujosComienzos.map((dibujo) => (
           <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
             <div className="imagen-wrapper">
-              <img src={dibujo.imagen || "/placeholder.svg"} alt={dibujo.titulo} />
+              <img src={dibujo.imagen || "/placeholder.svg"} alt={`dibujo-${dibujo.id}`} />
               <div className="overlay-galeria">
                 <div className="overlay-content">
-                  <span className="tecnica-overlay">{dibujo.tecnica}</span>
                   <span className="ver-detalle">Ver Detalle</span>
                 </div>
               </div>
@@ -137,7 +157,7 @@ function Comienzos() {
               <div className="acciones-galeria">
                 <span
                   className="corazon-galeria"
-                  onClick={(e) => { e.stopPropagation(); toggleLike(dibujo.id) }}
+                  onClick={(e) => { e.stopPropagation(); handleToggleLike(dibujo.id) }}
                   style={{ display: "flex", alignItems: "center", gap: 4 }}
                 >
                   {like[dibujo.id] ? (
@@ -149,8 +169,10 @@ function Comienzos() {
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
                   )}
-                  {like[dibujo.id] && (
-                    <span style={{ fontSize: 13, color: "#ff6b6b", fontWeight: 500 }}>1</span>
+                  {(likeCounts[dibujo.id] > 0 || like[dibujo.id]) && (
+                    <span style={{ fontSize: 13, color: "#ff6b6b", fontWeight: 500 }}>
+                      {likeCounts[dibujo.id] || 0}
+                    </span>
                   )}
                 </span>
               </div>
@@ -181,14 +203,11 @@ function Comienzos() {
           >
             <img
               src={imagenSeleccionada.imagen || "/placeholder.svg"}
-              alt={imagenSeleccionada.titulo}
+              alt={`dibujo-${imagenSeleccionada.id}`}
               onLoad={handleImageLoad}
               style={{
-                display: "block",
-                width: "100%",
-                height: "auto",
-                maxHeight: "90vh",
-                objectFit: "contain",
+                display: "block", width: "100%", height: "auto",
+                maxHeight: "90vh", objectFit: "contain",
               }}
             />
 
@@ -221,7 +240,7 @@ function Comienzos() {
               </span>
 
               <span
-                onClick={(e) => { e.stopPropagation(); toggleLike(imagenSeleccionada.id) }}
+                onClick={(e) => { e.stopPropagation(); handleToggleLike(imagenSeleccionada.id) }}
                 style={{ cursor: "pointer" }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg"
