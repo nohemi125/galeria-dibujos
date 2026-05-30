@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "../CSS/MuroDeAmor.css"
+import "../CSS/muroDeAmor.css"
 
 const EMOJIS = ["❤️", "🎨", "✨", "🔥", "😍", "🌟", "💫", "🙌"]
 
