@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:5000"
+const BASE_URL = "https://galeria-dibujos-backend.onrender.com"
 
 export const getLikes = async () => {
   const res = await fetch(`${BASE_URL}/likes`)
