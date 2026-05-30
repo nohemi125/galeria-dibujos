@@ -5,7 +5,7 @@ function Footer() {
     <footer className="footer-artista">
       <div className="footer-contenido">
         <div className="footer-nombre-bloque">
-          <span className="footer-titulo">Nohemy Morelo</span>
+          <span className="footer-titulo"> Nohemy Morelo</span>
           <span className="footer-subtitulo-texto">Artista Autodidacta · Realismo · Retratos</span>
         </div>
 
