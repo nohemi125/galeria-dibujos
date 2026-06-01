@@ -29,6 +29,17 @@ import dibujo34 from "../assets/actuales/dibujo34.jpeg"
 import dibujo35 from "../assets/actuales/dibujo35.jpeg"
 import dibujo36 from "../assets/actuales/dibujo36.jpeg"
 import dibujo37 from "../assets/actuales/dibujo37.jpeg"
+import dibujo38 from "../assets/actuales/dibujo38.jpeg"
+import dibujo39 from "../assets/actuales/dibujo39.jpeg"
+import dibujo40 from "../assets/actuales/dibujo40.jpeg"
+import dibujo41 from "../assets/actuales/dibujo41.jpeg"
+import dibujo42 from "../assets/actuales/dibujo42.jpeg"
+import dibujo43 from "../assets/actuales/dibujo43.jpeg"
+import dibujo44 from "../assets/actuales/dibujo44.jpeg"
+import dibujo45 from "../assets/actuales/dibujo45.jpeg"
+import dibujo46 from "../assets/actuales/dibujo46.jpeg"
+import dibujo47 from "../assets/actuales/dibujo47.jpeg"
+import dibujo48 from "../assets/actuales/dibujo48.jpeg"
 
 function Actuales() {
   const [like, setLike] = useState({})
@@ -78,31 +89,44 @@ function Actuales() {
 
 
   const dibujosActuales = [
-    { id: 6,  imagen: dibujo6,  año: 2023, tiempo: "1 hora" },
-    { id: 8,  imagen: dibujo8,  año: 2023, tiempo: "1 hora" },
-    { id: 10, imagen: dibujo10, año: 2023, tiempo: "12 horas" },
-    { id: 11, imagen: dibujo11, año: 2023, tiempo: "8 horas" },
-    { id: 17, imagen: dibujo17, año: 2023, tiempo: "8 horas" },
-    { id: 18, imagen: dibujo18, año: 2023, tiempo: "15 horas" },
-    { id: 19, imagen: dibujo19, año: 2024, tiempo: "11 horas" },
-    { id: 20, imagen: dibujo20, año: 2023, tiempo: "11 horas" },
-    { id: 21, imagen: dibujo21, año: 2023, tiempo: "10 horas" },
-    { id: 22, imagen: dibujo22, año: 2023, tiempo: "15 horas" },
-    { id: 23, imagen: dibujo23, año: 2023, tiempo: "7 horas" },
-    { id: 24, imagen: dibujo24, año: 2024, tiempo: "12 horas" },
-    { id: 25, imagen: dibujo25, año: 2023, tiempo: "13 horas" },
-    { id: 26, imagen: dibujo26, año: 2023, tiempo: "9 horas" },
-    { id: 27, imagen: dibujo27, año: 2025, tiempo: "2 horas" },
-    { id: 28, imagen: dibujo28, año: 2025, tiempo: "18 horas" },
-    { id: 29, imagen: dibujo29, año: 2025, tiempo: "2 horas" },
-    { id: 30, imagen: dibujo30, año: 2025, tiempo: "4 horas" },
-    { id: 31, imagen: dibujo31, año: 2025, tiempo: "13 horas" },
-    { id: 32, imagen: dibujo32, año: 2026, tiempo: "14 horas" },
-    { id: 33, imagen: dibujo33, año: 2026, tiempo: "8 horas" },
-    { id: 34, imagen: dibujo34, año: 2026, tiempo: "3 horas" },
-    { id: 35, imagen: dibujo35, año: 2026, tiempo: "17 horas" },
-    { id: 36, imagen: dibujo36, año: 2026, tiempo: "12 horas" },
-    { id: 37, imagen: dibujo37, año: 2026, tiempo: "3 horas" },
+    { id: 6,  imagen: dibujo6,  año: 2023, tiempo: "1 hora", categoria: "Dibujo por encargo" },
+    { id: 8,  imagen: dibujo8,  año: 2023, tiempo: "1 hora", categoria: "Dibujo por encargo" },
+    { id: 10, imagen: dibujo10, año: 2023, tiempo: "12 horas", categoria: "Dibujo por encargo" },
+    { id: 11, imagen: dibujo11, año: 2023, tiempo: "8 horas", categoria: "Dibujo por encargo" },
+    { id: 17, imagen: dibujo17, año: 2023, tiempo: "8 horas", categoria: "Dibujo por encargo" },
+    { id: 18, imagen: dibujo18, año: 2023, tiempo: "7 horas", categoria: "Dibujo por encargo" },
+    { id: 19, imagen: dibujo19, año: 2024, tiempo: "11 horas", categoria: "Dibujo por encargo" },
+    { id: 20, imagen: dibujo20, año: 2023, tiempo: "9 horas", categoria: "Dibujo por encargo" },
+    { id: 21, imagen: dibujo21, año: 2023, tiempo: "11 horas", categoria: "Dibujo por encargo" },
+    { id: 22, imagen: dibujo22, año: 2023, tiempo: "15 horas", categoria: "Dibujo por encargo" },
+    { id: 23, imagen: dibujo23, año: 2023, tiempo: "10 horas", categoria: "Proyecto personal" },
+    { id: 24, imagen: dibujo24, año: 2024, tiempo: "7 horas", categoria: "Dibujo por encargo" },
+    { id: 25, imagen: dibujo25, año: 2023, tiempo: "6 horas", categoria: "Inspirado en foto" },
+    { id: 26, imagen: dibujo26, año: 2023, tiempo: "9 horas", categoria: "Dibujo por encargo" },
+    { id: 27, imagen: dibujo27, año: 2025, tiempo: "5 horas", categoria: "Dibujo por encargo" },
+    { id: 28, imagen: dibujo28, año: 2025, tiempo: "1 horas", categoria: "Inspirado en foto" },
+    { id: 29, imagen: dibujo29, año: 2025, tiempo: "12 horas", categoria: "Reto" },
+    { id: 30, imagen: dibujo30, año: 2025, tiempo: "2 horas", categoria: "Inspirado en foto" },
+    { id: 31, imagen: dibujo31, año: 2025, tiempo: "3 horas", categoria: "Inspirado en foto" },
+    { id: 32, imagen: dibujo32, año: 2026, tiempo: "14 horas", categoria: "Reto" },
+    { id: 33, imagen: dibujo33, año: 2026, tiempo: "2 horas", categoria: "Inspirado en foto" },
+    { id: 34, imagen: dibujo34, año: 2026, tiempo: "3 horas", categoria: "Inspirado en foto" },
+    { id: 35, imagen: dibujo35, año: 2026, tiempo: "17 horas", categoria: "Reto" },
+    { id: 36, imagen: dibujo36, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
+    { id: 37, imagen: dibujo37, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
+    { id: 38, imagen: dibujo38, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
+    { id: 39, imagen: dibujo39, año: 2026, tiempo: "12 horas", categoria: "Dibujo por encargo" },
+    { id: 40, imagen: dibujo40, año: 2026, tiempo: "9 horas", categoria: "Dibujo por encargo" },
+    { id: 41, imagen: dibujo41, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
+    { id: 42, imagen: dibujo42, año: 2026, tiempo: "8 horas", categoria: "Dibujo por encargo" },
+    { id: 43, imagen: dibujo43, año: 2026, tiempo: "9 horas", categoria: "Dibujo por encargo" },
+    { id: 44, imagen: dibujo44, año: 2026, tiempo: "7 horas", categoria: "Inspirado en foto" },
+    { id: 45, imagen: dibujo45, año: 2026, tiempo: "7 horas", categoria: "Restauracion de Foto" },
+    { id: 46, imagen: dibujo46, año: 2026, tiempo: "7 horas", categoria: "Inspirado en foto" },
+    { id: 47, imagen: dibujo47, año: 2026, tiempo: "7 horas", categoria: "Reto" },
+    { id: 48, imagen: dibujo48, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
+
+
   ]
 
   const abrirModal = (dibujo) => {
@@ -137,6 +161,7 @@ function Actuales() {
 
             <div className="info-galeria">
               <div className="meta-info">
+                <span className="categoria-tag">{dibujo.categoria}</span>
                 <span className="año-galeria">Año: {dibujo.año}</span>
               </div>
               <div className="acciones-galeria">

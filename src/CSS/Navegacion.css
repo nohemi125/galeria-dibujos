@@ -152,3 +152,18 @@
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .nav-links {
+    gap: 0.4rem;
+  }
+
+  .nav-link {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .nav-logo h3 {
+    font-size: 1.1rem;
+  }
+}

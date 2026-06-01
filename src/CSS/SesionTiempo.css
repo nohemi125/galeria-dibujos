@@ -468,3 +468,139 @@
     font-size: 1.8rem;
   }
 }
+
+
+/* Fix: botón siempre visible con descripciones largas */
+.tarjeta-etapa {
+  height: auto;
+  min-height: 450px;
+}
+
+.contenido-tarjeta {
+  min-height: 450px;
+}
+
+.texto-tarjeta {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.descripcion-tarjeta {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer-tarjeta {
+  margin-top: 1rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .tarjeta-etapa {
+    min-height: 400px;
+    height: auto;
+  }
+
+  .contenido-tarjeta {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta-etapa {
+    min-height: 350px;
+  }
+
+  .contenido-tarjeta {
+    min-height: 350px;
+  }
+}
+
+/* bton para vista de muro de amor */
+.tarjeta-muro-amor {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, #f953c6 0%, #b91d73 100%);
+  border-radius: 25px;
+  padding: 2.5rem 3rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 30px rgba(249, 83, 198, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tarjeta-muro-amor:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(249, 83, 198, 0.4);
+}
+
+.muro-amor-contenido {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: white;
+}
+
+.muro-amor-icono {
+  font-size: 3.5rem;
+  flex-shrink: 0;
+}
+
+.muro-amor-texto {
+  flex-grow: 1;
+}
+
+.muro-amor-texto h3 {
+  font-family: "TituloPrincipal", serif;
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem;
+  color: white;
+  -webkit-text-fill-color: white;
+}
+
+.muro-amor-texto p {
+  font-family: "Parrafo", sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.muro-amor-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+  font-family: "TituloPrincipal", serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.tarjeta-muro-amor:hover .muro-amor-btn {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: white;
+}
+
+@media (max-width: 768px) {
+  .muro-amor-contenido {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.2rem;
+  }
+
+  .muro-amor-texto h3 {
+    font-size: 1.4rem;
+  }
+
+  .tarjeta-muro-amor {
+    padding: 2rem 1.5rem;
+  }
+}

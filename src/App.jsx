@@ -9,10 +9,12 @@ import AColor from "./components/AColor"
 import BoligrafoColor from "./components/BoligrafoColor"
 import MuroDeAmor from "./components/MuroDeAmor"
 import Footer from "./components/Footer"
+import ScrollToTop from "./components/ScrollToTop"
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navigation />
       <Routes>
         <Route

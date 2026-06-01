@@ -73,6 +73,8 @@ function SesionTiempo() {
       años: "2026",
       cantidad: "6 dibujos",
     },
+
+  
   ]
 
   return (
@@ -146,17 +148,35 @@ function SesionTiempo() {
           ))}
         </div>
 
+
+        {/* Tarjeta Muro de Amor */}
+        <Link to="/muro-de-amor" className="tarjeta-muro-amor">
+          <div className="muro-amor-contenido">
+            <span className="muro-amor-icono">💌</span>
+            <div className="muro-amor-texto">
+              <h3>¿Deseas apoyar me?</h3>
+              <p>Déjame un mensaje valorando mi talento, me llena de energía para seguir creando</p>
+            </div>
+            <span className="muro-amor-btn">
+              Dejar mi mensaje
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </span>
+          </div>
+        </Link>
+
         {/* Sección adicional */}
         <div className="seccion-adicional">
           <div className="caja-inspiracion">
             <h3>{"Cada etapa cuenta una historia única"}</h3>
             <p>
               Mi arte ha recorrido distintas etapas, desde los primeros dibujos de mi infancia,
-              donde solo buscaba que se parecieran a lo que veía, hasta retratos que expresan
-              emociones y desafíos técnicos. Con el tiempo, descubrí la magia del color, creando
-              obras que parecen irreales por su detalle, pero que nacen de trazos hechos a mano.
-              Cada etapa refleja mi crecimiento, mi pasión y ese deseo constante de acercarme a
-              la realidad a través del arte.
+              donde solo buscaba que se parecieran a lo que veía, hasta retratos expresivos 
+              y desafíos técnicos. Con el tiempo, descubrí el color, sigo creando
+              obras que parezcan irreales al detalle, que son de trazos hechos a mano.
+              Cada etapa refleja mi crecimiento, mi pasión y ese deseo constante de acercarme al
+              dibujo realista.
             </p>
           </div>
         </div>

@@ -46,7 +46,7 @@ function Navigation() {
           <Link to="/actuales" className={`nav-link ${location.pathname === "/actuales" ? "active" : ""}`} onClick={closeMenu}>
             Actuales
           </Link>
-          <Link to="/color" className={`nav-link ${location.pathname === "/color" ? "active" : ""}`} onClick={closeMenu}>
+          <Link to="/color" className={`nav-link ${location.pathname === "/A color" ? "active" : ""}`} onClick={closeMenu}>
             A Color
           </Link>
           <Link to="/boligrafo" className={`nav-link ${location.pathname === "/boligrafo" ? "active" : ""}`} onClick={closeMenu}>

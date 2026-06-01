@@ -42,16 +42,16 @@ function AColor() {
 
   const dibujosColor = [
     { id: 1,  imagen: dibujo1,  año: 2023, tiempo: "3 horas" },
-    { id: 2,  imagen: dibujo2,  año: 2023, tiempo: "15+ horas" },
-    { id: 3,  imagen: dibujo3,  año: 2024, tiempo: "2 horas" },
-    { id: 4,  imagen: dibujo4,  año: 2023, tiempo: "15+ horas" },
+    { id: 2,  imagen: dibujo2,  año: 2023, tiempo: "8 horas" },
+    { id: 3,  imagen: dibujo3,  año: 2024, tiempo: "3 horas" },
+    { id: 4,  imagen: dibujo4,  año: 2023, tiempo: "15 horas" },
     { id: 5,  imagen: dibujo5,  año: 2025, tiempo: "1 hora" },
     { id: 6,  imagen: dibujo6,  año: 2025, tiempo: "1 hora" },
     { id: 7,  imagen: dibujo7,  año: 2025, tiempo: "1 hora" },
     { id: 8,  imagen: dibujo8,  año: 2024, tiempo: "1 hora" },
     { id: 9,  imagen: dibujo9,  año: 2025, tiempo: "1 hora" },
     { id: 10, imagen: dibujo10, año: 2025, tiempo: "4 horas" },
-    { id: 11, imagen: dibujo11, año: 2025, tiempo: "4 horas" },
+    { id: 11, imagen: dibujo11, año: 2025, tiempo: "1 horas" },
     { id: 12, imagen: dibujo12, año: 2025, tiempo: "4 horas" },
   ]
 

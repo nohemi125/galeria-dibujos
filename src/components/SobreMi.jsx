@@ -154,7 +154,7 @@ function SobreMi() {
                   <div className="timeline-fecha">2013</div>
                   <div className="timeline-contenido">
                     <h4>Primeros Trazos</h4>
-                    <p>Descubrí mi pasión por el dibujo desde niña, creando caricaturas y copiando imágenes que me inspiraban.</p>
+                    <p>Descubrí mi pasión por el dibujo desde niña, creando caricaturas y copiando imágenes que llamaban mi atencion.</p>
                   </div>
                 </div>
                 <div className="timeline-item">
@@ -168,14 +168,14 @@ function SobreMi() {
                   <div className="timeline-fecha">2024</div>
                   <div className="timeline-contenido">
                     <h4>Estilo Propio</h4>
-                    <p>Consolidé un estilo único que combina dibujo a lápiz, color y emociones. Actualmente, comparto mi arte con el mundo mientras sigo creciendo como artista.</p>
+                    <p>Consolidé un estilo único que es dibujo a lápiz. Actualmente, comparto mi arte con el mundo mientras sigo creciendo como artista.</p>
                   </div>
                 </div>
                 <div className="timeline-item">
                   <div className="timeline-fecha">Visión</div>
                   <div className="timeline-contenido">
                     <h4>Artista Profesional</h4>
-                    <p>Aspiro a especializarme como artista profesional en hiperrealismo con grafito y lápices de colores. Quiero profundizar en estas técnicas y explorar nuevos medios como acuarela y óleo.</p>
+                    <p>Aspiro a especializarme como artista profesional en hiperrealismo con grafito y lápices de colores. y profundizar en estas técnicas y explorar nuevos medios como acuarela, boligrafo y dibujo digital.</p>
                   </div>
                 </div>
               </div>
