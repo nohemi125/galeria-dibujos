@@ -11,6 +11,8 @@ import dibujo4 from "../assets/boligrafo/dibujo4.jpeg"
 import dibujo5 from "../assets/boligrafo/dibujo5.jpeg"
 import dibujo6 from "../assets/boligrafo/dibujo6.jpeg"
 import dibujo7 from "../assets/boligrafo/dibujo7.jpeg"
+import dibujo8 from "../assets/boligrafo/dibujo8.jpeg"
+import dibujo9 from "../assets/boligrafo/dibujo9.jpeg"
 
 function BolígrafoColor() {
   const [like, setLike] = useState({})
@@ -43,6 +45,9 @@ function BolígrafoColor() {
     { id: 5, imagen: dibujo5, año: 2026, tiempo: "4 horas" },
     { id: 6, imagen: dibujo6, año: 2026, tiempo: "5 hora" },
     { id: 7, imagen: dibujo7, año: 2026, tiempo: "2 horas" },
+    { id: 8, imagen: dibujo8, año: 2026, tiempo: "3 horas" },
+    { id: 9, imagen: dibujo9, año: 2026, tiempo: "2 horas" },
+
   ]
 
   const handleImageLoad = (e) => {

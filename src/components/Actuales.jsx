@@ -16,7 +16,7 @@ import dibujo21 from "../assets/actuales/dibujo21.jpg"
 import dibujo22 from "../assets/actuales/dibujo22.jpg"
 import dibujo23 from "../assets/actuales/dibujo23.jpg"
 import dibujo24 from "../assets/actuales/dibujo24.jpg"
-import dibujo25 from "../assets/actuales/dibujo25.JPG"
+
 import dibujo26 from "../assets/actuales/dibujo26.jpg"
 import dibujo27 from "../assets/actuales/dibujo27.jpg"
 import dibujo28 from "../assets/actuales/dibujo28.JPG"
@@ -40,6 +40,10 @@ import dibujo45 from "../assets/actuales/dibujo45.jpeg"
 import dibujo46 from "../assets/actuales/dibujo46.jpeg"
 import dibujo47 from "../assets/actuales/dibujo47.jpeg"
 import dibujo48 from "../assets/actuales/dibujo48.jpeg"
+import dibujo49 from "../assets/actuales/dibujo49.jpeg"
+import dibujo50 from "../assets/actuales/dibujo50.jpeg"
+import dibujo51 from "../assets/actuales/dibujo51.jpeg"
+
 
 function Actuales() {
   const [like, setLike] = useState({})
@@ -101,7 +105,6 @@ function Actuales() {
     { id: 22, imagen: dibujo22, año: 2023, tiempo: "15 horas", categoria: "Dibujo por encargo" },
     { id: 23, imagen: dibujo23, año: 2023, tiempo: "10 horas", categoria: "Proyecto personal" },
     { id: 24, imagen: dibujo24, año: 2024, tiempo: "7 horas", categoria: "Dibujo por encargo" },
-    { id: 25, imagen: dibujo25, año: 2023, tiempo: "6 horas", categoria: "Inspirado en foto" },
     { id: 26, imagen: dibujo26, año: 2023, tiempo: "9 horas", categoria: "Dibujo por encargo" },
     { id: 27, imagen: dibujo27, año: 2025, tiempo: "5 horas", categoria: "Dibujo por encargo" },
     { id: 28, imagen: dibujo28, año: 2025, tiempo: "1 horas", categoria: "Inspirado en foto" },
@@ -125,6 +128,9 @@ function Actuales() {
     { id: 46, imagen: dibujo46, año: 2026, tiempo: "7 horas", categoria: "Inspirado en foto" },
     { id: 47, imagen: dibujo47, año: 2026, tiempo: "7 horas", categoria: "Reto" },
     { id: 48, imagen: dibujo48, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
+    { id: 49, imagen: dibujo49, año: 2026, tiempo: "10 horas", categoria: "Reto" },
+    { id: 50, imagen: dibujo50, año: 2026, tiempo: "8 horas", categoria: "Reto" },
+    { id: 51, imagen: dibujo51, año: 2026, tiempo: "10 horas", categoria: "dibujo por encargo" },
 
 
   ]
