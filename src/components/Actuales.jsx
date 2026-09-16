@@ -16,7 +16,6 @@ import dibujo21 from "../assets/actuales/dibujo21.jpg"
 import dibujo22 from "../assets/actuales/dibujo22.jpg"
 import dibujo23 from "../assets/actuales/dibujo23.jpg"
 import dibujo24 from "../assets/actuales/dibujo24.jpg"
-
 import dibujo26 from "../assets/actuales/dibujo26.jpg"
 import dibujo27 from "../assets/actuales/dibujo27.jpg"
 import dibujo28 from "../assets/actuales/dibujo28.JPG"
@@ -44,6 +43,7 @@ import dibujo49 from "../assets/actuales/dibujo49.jpeg"
 import dibujo50 from "../assets/actuales/dibujo50.jpeg"
 import dibujo51 from "../assets/actuales/dibujo51.jpeg"
 
+const FILTROS = ["Dibujo por encargo", "Reto", "Inspirado en foto", "Restauracion de Foto", "Todos"]
 
 function Actuales() {
   const [like, setLike] = useState({})
@@ -51,24 +51,67 @@ function Actuales() {
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
   const [orientacion, setOrientacion] = useState("vertical")
+  const [filtroActivo, setFiltroActivo] = useState("Todos")
 
   useEffect(() => {
-  // Cargar likes de MongoDB
-  getLikes().then((data) => {
-    const counts = {}
-    Object.entries(data).forEach(([key, count]) => {
-      if (key.startsWith("actuales-")) {
-        const id = parseInt(key.split("-")[1])
-        counts[id] = count
-      }
+    const savedLikes = JSON.parse(localStorage.getItem("actuales-likes") || "{}")
+    setLike(savedLikes)
+    getLikes().then((data) => {
+      const counts = {}
+      Object.entries(data).forEach(([key, count]) => {
+        if (key.startsWith("actuales-")) {
+          const id = parseInt(key.split("-")[1])
+          counts[id] = count
+        }
+      })
+      setLikeCounts(counts)
     })
-    setLikeCounts(counts)
-  })
+  }, [])
 
-  // Cargar qué imágenes likeó este usuario desde localStorage
-  const savedLikes = JSON.parse(localStorage.getItem("actuales-likes") || "{}")
-  setLike(savedLikes)
-}, [])
+  const dibujosActuales = [
+    { id: 6,  imagen: dibujo6,  año: 2023, tiempo: "1 hora",    categoria: "Dibujo por encargo" },
+    { id: 8,  imagen: dibujo8,  año: 2023, tiempo: "1 hora",    categoria: "Dibujo por encargo" },
+    { id: 10, imagen: dibujo10, año: 2023, tiempo: "12 horas",  categoria: "Dibujo por encargo" },
+    { id: 11, imagen: dibujo11, año: 2023, tiempo: "8 horas",   categoria: "Dibujo por encargo" },
+    { id: 17, imagen: dibujo17, año: 2023, tiempo: "8 horas",   categoria: "Dibujo por encargo" },
+    { id: 18, imagen: dibujo18, año: 2023, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
+    { id: 19, imagen: dibujo19, año: 2024, tiempo: "11 horas",  categoria: "Dibujo por encargo" },
+    { id: 20, imagen: dibujo20, año: 2023, tiempo: "9 horas",   categoria: "Dibujo por encargo" },
+    { id: 21, imagen: dibujo21, año: 2023, tiempo: "11 horas",  categoria: "Dibujo por encargo" },
+    { id: 22, imagen: dibujo22, año: 2023, tiempo: "15 horas",  categoria: "Dibujo por encargo" },
+    { id: 23, imagen: dibujo23, año: 2023, tiempo: "10 horas",  categoria: "Inspirado en foto" },
+    { id: 24, imagen: dibujo24, año: 2024, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
+    { id: 26, imagen: dibujo26, año: 2023, tiempo: "9 horas",   categoria: "Dibujo por encargo" },
+    { id: 27, imagen: dibujo27, año: 2025, tiempo: "5 horas",   categoria: "Dibujo por encargo" },
+    { id: 28, imagen: dibujo28, año: 2025, tiempo: "1 hora",    categoria: "Inspirado en foto" },
+    { id: 29, imagen: dibujo29, año: 2025, tiempo: "12 horas",  categoria: "Reto" },
+    { id: 30, imagen: dibujo30, año: 2025, tiempo: "2 horas",   categoria: "Inspirado en foto" },
+    { id: 31, imagen: dibujo31, año: 2025, tiempo: "3 horas",   categoria: "Inspirado en foto" },
+    { id: 32, imagen: dibujo32, año: 2026, tiempo: "14 horas",  categoria: "Reto" },
+    { id: 33, imagen: dibujo33, año: 2026, tiempo: "2 horas",   categoria: "Inspirado en foto" },
+    { id: 34, imagen: dibujo34, año: 2026, tiempo: "3 horas",   categoria: "Inspirado en foto" },
+    { id: 35, imagen: dibujo35, año: 2026, tiempo: "17 horas",  categoria: "Reto" },
+    { id: 36, imagen: dibujo36, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
+    { id: 37, imagen: dibujo37, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
+    { id: 38, imagen: dibujo38, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
+    { id: 39, imagen: dibujo39, año: 2026, tiempo: "12 horas",  categoria: "Dibujo por encargo" },
+    { id: 40, imagen: dibujo40, año: 2026, tiempo: "9 horas",   categoria: "Dibujo por encargo" },
+    { id: 41, imagen: dibujo41, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
+    { id: 42, imagen: dibujo42, año: 2026, tiempo: "8 horas",   categoria: "Dibujo por encargo" },
+    { id: 43, imagen: dibujo43, año: 2026, tiempo: "9 horas",   categoria: "Dibujo por encargo" },
+    { id: 44, imagen: dibujo44, año: 2026, tiempo: "7 horas",   categoria: "Inspirado en foto" },
+    { id: 45, imagen: dibujo45, año: 2026, tiempo: "7 horas",   categoria: "Restauracion de Foto" },
+    { id: 46, imagen: dibujo46, año: 2026, tiempo: "7 horas",   categoria: "Inspirado en foto" },
+    { id: 47, imagen: dibujo47, año: 2026, tiempo: "7 horas",   categoria: "Reto" },
+    { id: 48, imagen: dibujo48, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
+    { id: 49, imagen: dibujo49, año: 2026, tiempo: "10 horas",  categoria: "Reto" },
+    { id: 50, imagen: dibujo50, año: 2026, tiempo: "8 horas",   categoria: "Reto" },
+    { id: 51, imagen: dibujo51, año: 2026, tiempo: "10 horas",  categoria: "Dibujo por encargo" },
+  ]
+
+  const dibujosFiltrados = filtroActivo === "Todos"
+    ? dibujosActuales
+    : dibujosActuales.filter((d) => d.categoria === filtroActivo)
 
   const handleImageLoad = (e) => {
     const { naturalWidth, naturalHeight } = e.target
@@ -76,64 +119,14 @@ function Actuales() {
   }
 
   const handleToggleLike = async (id) => {
-  const imagenId = `actuales-${id}`
-  const accion = like[id] ? "unlike" : "like"
-
-  // Actualizar estado local
-  const newLike = { ...like, [id]: !like[id] }
-  setLike(newLike)
-
-  // Guardar en localStorage
-  localStorage.setItem("actuales-likes", JSON.stringify(newLike))
-
-  // Guardar en MongoDB
-  const data = await apiToggleLike(imagenId, accion)
-  setLikeCounts((prev) => ({ ...prev, [id]: data.count }))
-}
-
-
-  const dibujosActuales = [
-    { id: 6,  imagen: dibujo6,  año: 2023, tiempo: "1 hora", categoria: "Dibujo por encargo" },
-    { id: 8,  imagen: dibujo8,  año: 2023, tiempo: "1 hora", categoria: "Dibujo por encargo" },
-    { id: 10, imagen: dibujo10, año: 2023, tiempo: "12 horas", categoria: "Dibujo por encargo" },
-    { id: 11, imagen: dibujo11, año: 2023, tiempo: "8 horas", categoria: "Dibujo por encargo" },
-    { id: 17, imagen: dibujo17, año: 2023, tiempo: "8 horas", categoria: "Dibujo por encargo" },
-    { id: 18, imagen: dibujo18, año: 2023, tiempo: "7 horas", categoria: "Dibujo por encargo" },
-    { id: 19, imagen: dibujo19, año: 2024, tiempo: "11 horas", categoria: "Dibujo por encargo" },
-    { id: 20, imagen: dibujo20, año: 2023, tiempo: "9 horas", categoria: "Dibujo por encargo" },
-    { id: 21, imagen: dibujo21, año: 2023, tiempo: "11 horas", categoria: "Dibujo por encargo" },
-    { id: 22, imagen: dibujo22, año: 2023, tiempo: "15 horas", categoria: "Dibujo por encargo" },
-    { id: 23, imagen: dibujo23, año: 2023, tiempo: "10 horas", categoria: "Proyecto personal" },
-    { id: 24, imagen: dibujo24, año: 2024, tiempo: "7 horas", categoria: "Dibujo por encargo" },
-    { id: 26, imagen: dibujo26, año: 2023, tiempo: "9 horas", categoria: "Dibujo por encargo" },
-    { id: 27, imagen: dibujo27, año: 2025, tiempo: "5 horas", categoria: "Dibujo por encargo" },
-    { id: 28, imagen: dibujo28, año: 2025, tiempo: "1 horas", categoria: "Inspirado en foto" },
-    { id: 29, imagen: dibujo29, año: 2025, tiempo: "12 horas", categoria: "Reto" },
-    { id: 30, imagen: dibujo30, año: 2025, tiempo: "2 horas", categoria: "Inspirado en foto" },
-    { id: 31, imagen: dibujo31, año: 2025, tiempo: "3 horas", categoria: "Inspirado en foto" },
-    { id: 32, imagen: dibujo32, año: 2026, tiempo: "14 horas", categoria: "Reto" },
-    { id: 33, imagen: dibujo33, año: 2026, tiempo: "2 horas", categoria: "Inspirado en foto" },
-    { id: 34, imagen: dibujo34, año: 2026, tiempo: "3 horas", categoria: "Inspirado en foto" },
-    { id: 35, imagen: dibujo35, año: 2026, tiempo: "17 horas", categoria: "Reto" },
-    { id: 36, imagen: dibujo36, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
-    { id: 37, imagen: dibujo37, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
-    { id: 38, imagen: dibujo38, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
-    { id: 39, imagen: dibujo39, año: 2026, tiempo: "12 horas", categoria: "Dibujo por encargo" },
-    { id: 40, imagen: dibujo40, año: 2026, tiempo: "9 horas", categoria: "Dibujo por encargo" },
-    { id: 41, imagen: dibujo41, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
-    { id: 42, imagen: dibujo42, año: 2026, tiempo: "8 horas", categoria: "Dibujo por encargo" },
-    { id: 43, imagen: dibujo43, año: 2026, tiempo: "9 horas", categoria: "Dibujo por encargo" },
-    { id: 44, imagen: dibujo44, año: 2026, tiempo: "7 horas", categoria: "Inspirado en foto" },
-    { id: 45, imagen: dibujo45, año: 2026, tiempo: "7 horas", categoria: "Restauracion de Foto" },
-    { id: 46, imagen: dibujo46, año: 2026, tiempo: "7 horas", categoria: "Inspirado en foto" },
-    { id: 47, imagen: dibujo47, año: 2026, tiempo: "7 horas", categoria: "Reto" },
-    { id: 48, imagen: dibujo48, año: 2026, tiempo: "7 horas", categoria: "Dibujo por encargo" },
-    { id: 49, imagen: dibujo49, año: 2026, tiempo: "10 horas", categoria: "Reto" },
-    { id: 50, imagen: dibujo50, año: 2026, tiempo: "8 horas", categoria: "Reto" },
-    { id: 51, imagen: dibujo51, año: 2026, tiempo: "10 horas", categoria: "dibujo por encargo" },
-
-
-  ]
+    const imagenId = `actuales-${id}`
+    const accion = like[id] ? "unlike" : "like"
+    const newLike = { ...like, [id]: !like[id] }
+    setLike(newLike)
+    localStorage.setItem("actuales-likes", JSON.stringify(newLike))
+    const data = await apiToggleLike(imagenId, accion)
+    setLikeCounts((prev) => ({ ...prev, [id]: data.count }))
+  }
 
   const abrirModal = (dibujo) => {
     setImagenSeleccionada(dibujo)
@@ -153,8 +146,46 @@ function Actuales() {
         <p>Explorando el hiperrealismo y técnicas avanzadas</p>
       </div>
 
+   {/* Filtros */}
+
+<div className="filtros-seccion">
+  <span className="filtro-label">Filtrar por:</span>
+  <div className="filtros-wrapper filtros-botones">
+    {FILTROS.map((filtro) => (
+      <button
+        key={filtro}
+        onClick={() => setFiltroActivo(filtro)}
+        className={`filtro-btn ${filtroActivo === filtro ? "activo" : ""}`}
+      >
+        {filtro}
+      </button>
+    ))}
+  </div>
+  <div className="filtros-select-wrapper">
+    <select
+      className="filtros-select"
+      value={filtroActivo}
+      onChange={(e) => setFiltroActivo(e.target.value)}
+      aria-label="Filtrar dibujos actuales"
+    >
+      {FILTROS.map((filtro) => (
+        <option key={filtro} value={filtro}>
+          {filtro}
+        </option>
+      ))}
+    </select>
+  </div>
+  <p className="filtro-contador">
+    {dibujosFiltrados.length} {dibujosFiltrados.length === 1 ? "dibujo" : "dibujos"}
+  </p>
+</div>
+{/*      
+      {/* <p style={{ fontSize: 12, color: "#aaa", padding: "0 1rem 1rem" }}>
+        {dibujosFiltrados.length} {dibujosFiltrados.length === 1 ? "dibujo" : "dibujos"}
+      </p> */} 
+
       <div className="galeria-grid">
-        {dibujosActuales.map((dibujo) => (
+        {dibujosFiltrados.map((dibujo) => (
           <div className="tarjeta-galeria" key={dibujo.id} onClick={() => abrirModal(dibujo)}>
             <div className="imagen-wrapper">
               <img src={dibujo.imagen || "/placeholder.svg"} alt={`dibujo-${dibujo.id}`} />
@@ -167,7 +198,6 @@ function Actuales() {
 
             <div className="info-galeria">
               <div className="meta-info">
-                <span className="categoria-tag">{dibujo.categoria}</span>
                 <span className="año-galeria">Año: {dibujo.año}</span>
               </div>
               <div className="acciones-galeria">

@@ -56,6 +56,68 @@
 }
 
 /* Filtros */
+.filtros-seccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 2rem 1.5rem;
+}
+
+.filtro-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  text-align: center;
+}
+
+.filtros-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.filtros-botones {
+  margin: 0 auto;
+}
+
+.filtros-select-wrapper {
+  display: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.filtros-select {
+  width: min(100%, 300px);
+  padding: 0.7rem 0.95rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-family: "Parrafo", sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.filtros-select option {
+  color: #222;
+}
+
+.filtro-contador {
+  font-size: 12px;
+  color: #ffe3ef;
+  text-align: center;
+  margin: 0;
+  padding: 0 0 1rem;
+  font-weight: 600;
+}
+
 .filtros-galeria {
   display: flex;
   justify-content: center;
@@ -66,9 +128,9 @@
 }
 
 .filtro-btn {
-  padding: 0.8rem 1.5rem;
+  padding: 0.7rem 1.2rem;
   border: none;
-  border-radius: 25px;
+  border-radius: 22px;
   background: rgba(255, 255, 255, 0.2);
   color: white;
   font-weight: 500;
@@ -77,6 +139,8 @@
   backdrop-filter: blur(10px);
   border: 2px solid transparent;
   font-family: "Parrafo", sans-serif;
+  flex-shrink: 0;
+  font-size: 0.92rem;
 }
 
 .filtro-btn:hover {
@@ -454,9 +518,21 @@
     gap: 0.5rem;
   }
 
-  .filtro-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
+  .filtros-seccion {
+    padding: 0 1rem 1.25rem;
+  }
+
+  .filtros-botones {
+    display: none;
+  }
+
+  .filtros-select-wrapper {
+    display: flex;
+  }
+
+  .filtros-select {
+    width: min(100%, 240px);
+    max-width: 240px;
   }
 
   /* Responsive para modal */
@@ -511,8 +587,12 @@
     align-items: center;
   }
 
-  .filtro-btn {
-    width: 200px;
+  .filtros-botones {
+    display: none;
+  }
+
+  .filtros-select-wrapper {
+    display: flex;
   }
 
   /* Responsive para modal */

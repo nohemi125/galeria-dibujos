@@ -42,6 +42,67 @@
     margin: 0 auto;
   }
   
+/* ── Filtros ─────────────────────────────────────────── */
+.filtros-seccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 2rem 1.5rem;
+}
+
+.filtro-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  text-align: center;
+}
+
+.filtros-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.filtro-btn {
+  padding: 7px 18px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.filtro-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.filtro-btn.activo {
+  background: #fff;
+  color: #333;
+  border-color: #fff;
+  font-weight: 700;
+}
+
+.filtro-contador {
+  font-size: 12px;
+  color: #ffe3ef;
+  text-align: center;
+  margin: 0;
+  padding: 0 0 1rem;
+  font-weight: 600;
+}
+
+
   .tarjeta-actual {
     background: #fff;
     border-radius: 20px;
@@ -188,6 +249,14 @@
       grid-template-columns: 1fr;
       padding: 0 1rem;
     }
+
+    .filtros-seccion {
+      padding: 0 1rem 1.25rem;
+    }
+
+    .filtros-wrapper {
+      gap: 0.5rem;
+    }
   
     .titulo-actuales h2 {
       font-size: 2rem;
@@ -195,6 +264,11 @@
   
     .titulo-actuales p {
       font-size: 1rem;
+    }
+
+    .filtro-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
     }
   }
   
