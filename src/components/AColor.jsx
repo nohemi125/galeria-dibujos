@@ -15,7 +15,8 @@ import dibujo8 from "../assets/acolor/dibujo8.JPG"
 import dibujo9 from "../assets/acolor/dibujo9.JPG"
 import dibujo10 from "../assets/acolor/dibujo10.jpg"
 import dibujo11 from "../assets/acolor/dibujo11.jpeg"
-import dibujo12 from "../assets/acolor/dibujo12.jpeg"
+import dibujo12 from "../assets/acolor/dibujo12.png"
+import dibujo13 from "../assets/acolor/dibujo13.jpeg"
 
 function AColor() {
   const [like, setLike] = useState({})
@@ -51,8 +52,9 @@ function AColor() {
     { id: 8,  imagen: dibujo8,  año: 2024, tiempo: "1 hora" },
     { id: 9,  imagen: dibujo9,  año: 2025, tiempo: "1 hora" },
     { id: 10, imagen: dibujo10, año: 2025, tiempo: "4 horas" },
-    { id: 11, imagen: dibujo11, año: 2025, tiempo: "1 horas" },
-    { id: 12, imagen: dibujo12, año: 2025, tiempo: "4 horas" },
+    { id: 11, imagen: dibujo11, año: 2026, tiempo: "3 horas" },
+    { id: 12, imagen: dibujo12, año: 2026, tiempo: "4 horas" },
+    { id: 13, imagen: dibujo13, año: 2026, tiempo: "1 horas" },
   ]
 
   const handleImageLoad = (e) => {

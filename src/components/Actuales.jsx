@@ -24,21 +24,21 @@ import dibujo30 from "../assets/actuales/dibujo30.jpg"
 import dibujo31 from "../assets/actuales/dibujo31.jpg"
 import dibujo32 from "../assets/actuales/dibujo32.jpeg"
 import dibujo33 from "../assets/actuales/dibujo33.jpeg"
-import dibujo34 from "../assets/actuales/dibujo34.jpeg"
+import dibujo34 from "../assets/actuales/dibujo34.jpg"
 import dibujo35 from "../assets/actuales/dibujo35.jpeg"
 import dibujo36 from "../assets/actuales/dibujo36.jpeg"
 import dibujo37 from "../assets/actuales/dibujo37.jpeg"
 import dibujo38 from "../assets/actuales/dibujo38.jpeg"
-import dibujo39 from "../assets/actuales/dibujo39.jpeg"
-import dibujo40 from "../assets/actuales/dibujo40.jpeg"
-import dibujo41 from "../assets/actuales/dibujo41.jpeg"
+import dibujo39 from "../assets/actuales/dibujo39.jpg"
+import dibujo40 from "../assets/actuales/dibujo40.jpg"
+import dibujo41 from "../assets/actuales/dibujo41.jpg"
 import dibujo42 from "../assets/actuales/dibujo42.jpeg"
 import dibujo43 from "../assets/actuales/dibujo43.jpeg"
-import dibujo44 from "../assets/actuales/dibujo44.jpeg"
+import dibujo44 from "../assets/actuales/dibujo44.jpg"
 import dibujo45 from "../assets/actuales/dibujo45.jpeg"
-import dibujo46 from "../assets/actuales/dibujo46.jpeg"
+import dibujo46 from "../assets/actuales/dibujo46.jpg"
 import dibujo47 from "../assets/actuales/dibujo47.jpeg"
-import dibujo48 from "../assets/actuales/dibujo48.jpeg"
+import dibujo48 from "../assets/actuales/dibujo48.jpg"
 import dibujo49 from "../assets/actuales/dibujo49.jpeg"
 import dibujo50 from "../assets/actuales/dibujo50.jpeg"
 import dibujo51 from "../assets/actuales/dibujo51.jpeg"
@@ -94,15 +94,15 @@ function Actuales() {
     { id: 36, imagen: dibujo36, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
     { id: 37, imagen: dibujo37, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
     { id: 38, imagen: dibujo38, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
-    { id: 39, imagen: dibujo39, año: 2026, tiempo: "12 horas",  categoria: "Dibujo por encargo" },
-    { id: 40, imagen: dibujo40, año: 2026, tiempo: "9 horas",   categoria: "Dibujo por encargo" },
-    { id: 41, imagen: dibujo41, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
+    { id: 39, imagen: dibujo39, año: 2025, tiempo: "12 horas",  categoria: "Dibujo por encargo" },
+    { id: 40, imagen: dibujo40, año: 2025, tiempo: "9 horas",   categoria: "Dibujo por encargo" },
+    { id: 41, imagen: dibujo41, año: 2025, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
     { id: 42, imagen: dibujo42, año: 2026, tiempo: "8 horas",   categoria: "Dibujo por encargo" },
-    { id: 43, imagen: dibujo43, año: 2026, tiempo: "9 horas",   categoria: "Dibujo por encargo" },
+    { id: 43, imagen: dibujo43, año: 2025, tiempo: "9 horas",   categoria: "Dibujo por encargo" },
     { id: 44, imagen: dibujo44, año: 2026, tiempo: "7 horas",   categoria: "Inspirado en foto" },
     { id: 45, imagen: dibujo45, año: 2026, tiempo: "7 horas",   categoria: "Restauracion de Foto" },
     { id: 46, imagen: dibujo46, año: 2026, tiempo: "7 horas",   categoria: "Inspirado en foto" },
-    { id: 47, imagen: dibujo47, año: 2026, tiempo: "7 horas",   categoria: "Reto" },
+    { id: 47, imagen: dibujo47, año: 2025, tiempo: "7 horas",   categoria: "Reto" },
     { id: 48, imagen: dibujo48, año: 2026, tiempo: "7 horas",   categoria: "Dibujo por encargo" },
     { id: 49, imagen: dibujo49, año: 2026, tiempo: "10 horas",  categoria: "Reto" },
     { id: 50, imagen: dibujo50, año: 2026, tiempo: "8 horas",   categoria: "Reto" },
